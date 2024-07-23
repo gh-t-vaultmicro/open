@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <sstream>
 #include <getopt.h>
+#include <filesystem>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -14,17 +15,21 @@
 
 using namespace cv;
 using namespace std;
-using namespace std::chrono;
+using namespace chrono;
+namespace fs = std::__fs::filesystem;
 
 bool verbose = false;
 
 void show_usage(){
+    cout << "----------------------------Usage---------------------------- " << endl;
     cout << "[-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]" << endl;
-    cout << "e.g.) sudo ./open -d 0 -f 24 -w 1920 -h 1080 -v: " << endl;
+    cout << "e.g.) sudo ./open -d 0 -f 24 -w 1920 -h 1080 -v " << endl;
     cout << "build) g++ -std=c++11 -o open open1slp.cpp `pkg-config --cflags --libs opencv4` " << endl;
-    cout << "Only detect less than 10 cameras " << endl;
-    cout << "Igore the errors shown at the very first, no device found " << endl;
     cout << "./open to show usage " << endl;
+    cout << "Only detect less than 10 cameras " << endl;
+    cout << "Igore the errors shown at the very first, -no device found " << endl;
+    cout << "This shows the streaming screen and saves on file using ffmpeg " << endl;
+    cout << "Each frames are captured on picture_frame " << endl;
 }
 
 int count_cameras() {
@@ -68,8 +73,6 @@ void list_cameras(int num_cameras) {
     }
 }
 
-
-
 void log_with_time(const string& message) {
     auto now = system_clock::now();
     auto in_time_t = system_clock::to_time_t(now);
@@ -89,6 +92,15 @@ void log_with_time(const string& message) {
     cout << ss.str() << ": " << message << endl;
 }
 
+string getCurrentTimeFormatted() {
+    auto t = time(nullptr);
+    auto tm = *localtime(&t);
+    ostringstream oss;
+    oss << put_time(&tm, "%S-%M-%H-%d-%m-%Y");
+    return oss.str();
+}
+
+
 int main(int argc, char** argv) {
 #ifdef _WIN32
     if (!SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS)) {
@@ -106,6 +118,10 @@ int main(int argc, char** argv) {
     int width = -1;
     int height = -1;
 
+    string pixel_format = "bgr24";
+    string video_format = "mp4";
+    string base_path = "./";
+
     // Command line options
     int opt;
     while ((opt = getopt(argc, argv, "d:f:c:w:h:v")) != -1) {
@@ -118,6 +134,9 @@ int main(int argc, char** argv) {
                 break;
             case 'c':
                 codec = stoi(optarg);
+                break;
+            case 'p':
+                pixel_format = stoi(optarg);
                 break;
             case 'w':
                 width = stoi(optarg);
@@ -142,6 +161,16 @@ int main(int argc, char** argv) {
         return 0;
     }
 
+    /*
+    if (default) {
+        int desired_device_id = 0;
+        int fps = 30;
+        int codec = ['M','J','P','G'];
+        int width = 640;
+        int height = 480;
+    }
+    */
+
     VideoCapture cap(desired_device_id); // Open the selected camera
     if (!cap.isOpened()) { // Check if we succeeded
         cerr << "Error: Could not open video." << endl;
@@ -165,10 +194,22 @@ int main(int argc, char** argv) {
     int frame_loss = 0;
     double sleep_time_per_frame = 1.0e6 / fps;
 
+    string current_time_str = getCurrentTimeFormatted();
+    string log_name = base_path + "log/ffmpeg_log_" + current_time_str + ".txt";
+    string video_name = base_path + "video/output_" + current_time_str + "." + video_format;
+    string frame_dir = base_path + "picture_frame/" + current_time_str;
+
+    // Create directory for frames
+    fs::create_directories(frame_dir);
+
     // Start FFmpeg process with log level set to error and log output redirected to a file
     stringstream ffmpeg_cmd;
-    ffmpeg_cmd << "ffmpeg -y -loglevel debug -f rawvideo -pixel_format bgr24 -video_size " << width << "x" << height
-               << " -r " << fps << " -i - -c:v libx264 -pix_fmt yuv420p output.mp4 2> ffmpeg_log.txt"; //change the pixel format as input, mp4name or mov and logname as ss/mm/hh/dd format, 
+
+    ffmpeg_cmd << "ffmpeg -y -loglevel debug -f rawvideo -pixel_format bgr24 -video_size " 
+               << width << "x" << height
+               << " -r " << fps 
+               << " -i - -c:v libx264 -pix_fmt yuv420p " 
+               << video_name << " 2> " << log_name;
 
     FILE* ffmpeg = popen(ffmpeg_cmd.str().c_str(), "w");
     if (!ffmpeg) {
@@ -189,6 +230,10 @@ int main(int argc, char** argv) {
 
         // Write frame to FFmpeg
         fwrite(frame.data, 1, frame.total() * frame.elemSize(), ffmpeg);
+        // Save frame as JPEG
+        stringstream frame_path_ss;
+        frame_path_ss << frame_dir << "/frame_" << setfill('0') << setw(6) << frame_count << ".jpg";
+        imwrite(frame_path_ss.str(), frame);
 
         frame_count++;
         frames_last_second++;
@@ -197,6 +242,7 @@ int main(int argc, char** argv) {
         auto elapsed_time = duration_cast<seconds>(current_time - last_time).count();
 
         if (elapsed_time >= 1 || frames_last_second >= fps) {
+
             stringstream ss;
             ss << "Frames in the last second: " << frames_last_second 
             << ", Frame loss: " << frame_loss 
@@ -223,7 +269,9 @@ int main(int argc, char** argv) {
             ss << elapsed_loop_time << "ms" << ", Total frame: " << frame_count;
             log_with_time(ss.str());
         }
-
+        
+        //when no sleep cpu cycle will run as much as they can so could cause faster fps than you have set
+        //also discarding it sometimes may not work exit key
         //double sleep_time = max(sleep_time_per_frame - duration_cast<microseconds>(steady_clock::now() - start_time).count(), 0.0);
         //this_thread::sleep_for(microseconds(static_cast<int>(sleep_time)));
     }
