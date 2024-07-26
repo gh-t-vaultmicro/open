@@ -6,6 +6,7 @@
 #include <sstream>
 #include <getopt.h>
 #include <filesystem>
+#include <fstream>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -19,6 +20,7 @@ using namespace chrono;
 namespace fs = std::__fs::filesystem;
 
 bool verbose = false;
+ofstream log_file;
 
 void show_usage(){
     cout << "----------------------------Usage---------------------------- " << endl;
@@ -44,11 +46,13 @@ int count_cameras() {
         }
     }
     cout << "Camera limit 10 exceeded" << endl;
+    log_file << "Camera limit 10 exceeded" << endl;
     return num_cameras;
 }
 
 void list_cameras(int num_cameras) {
     cout << "List Cameras\n " << endl;
+    log_file << "List Cameras\n " << endl;
     for (int device_id = 0;  device_id < num_cameras; ++device_id) {
         VideoCapture cap(device_id);
         if (!cap.isOpened()) {
@@ -69,6 +73,10 @@ void list_cameras(int num_cameras) {
         cout << "Resolution: " << width << "x" << height << endl;
         cout << "FPS: " << fps << endl;
         cout << "FOURCC: " << fourcc_chars << endl << endl;
+        log_file << "Device ID: " << device_id << endl;
+        log_file << "Resolution: " << width << "x" << height << endl;
+        log_file << "FPS: " << fps << endl;
+        log_file << "FOURCC: " << fourcc_chars << endl << endl;
         cap.release();
     }
 }
@@ -90,6 +98,7 @@ void log_with_time(const string& message) {
     ss << '.' << std::setfill('0') << std::setw(3) << ms.count();
 
     cout << ss.str() << ": " << message << endl;
+    log_file << ss.str() << ": " << message << endl;
 }
 
 string getCurrentTimeFormatted() {
@@ -100,8 +109,12 @@ string getCurrentTimeFormatted() {
     return oss.str();
 }
 
-
 int main(int argc, char** argv) {
+    string base_path = "./";
+    string current_time_str = getCurrentTimeFormatted();
+    string log_path = base_path + "log/log_" + current_time_str + ".txt";
+    log_file.open(log_path);
+
 #ifdef _WIN32
     if (!SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS)) {
         cerr << "Failed to set process priority" << endl;
@@ -120,7 +133,6 @@ int main(int argc, char** argv) {
 
     string pixel_format = "bgr24";
     string video_format = "mp4";
-    string base_path = "./";
 
     // Command line options
     int opt;
@@ -149,10 +161,10 @@ int main(int argc, char** argv) {
                 break;
             default:
                 cerr << "Usage: " << argv[0] << " [-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]" << endl;
+                log_file << "Usage: " << argv[0] << " [-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]" << endl;
                 return -1;
         }
     }
-
 
     if (desired_device_id == -1 && fps == -1 && codec ==-1 && width == -1 && height == -1) {
         int num_cameras = count_cameras();
@@ -161,19 +173,10 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    /*
-    if (default) {
-        int desired_device_id = 0;
-        int fps = 30;
-        int codec = ['M','J','P','G'];
-        int width = 640;
-        int height = 480;
-    }
-    */
-
     VideoCapture cap(desired_device_id); // Open the selected camera
     if (!cap.isOpened()) { // Check if we succeeded
         cerr << "Error: Could not open video." << endl;
+        log_file << "Error: Could not open video." << endl;
         return -1;
     }
 
@@ -187,6 +190,8 @@ int main(int argc, char** argv) {
     double set_height = cap.get(CAP_PROP_FRAME_HEIGHT);
     cout << endl << "Camera FPS set to: " << set_fps << endl;
     cout << "Camera resolution set to: " << set_width << "x" << set_height << endl << endl;
+    log_file << endl << "Camera FPS set to: " << set_fps << endl;
+    log_file << "Camera resolution set to: " << set_width << "x" << set_height << endl << endl;
 
     int frame_count = 0;
     auto last_time = steady_clock::now();
@@ -194,7 +199,6 @@ int main(int argc, char** argv) {
     int frame_loss = 0;
     double sleep_time_per_frame = 1.0e6 / fps;
 
-    string current_time_str = getCurrentTimeFormatted();
     string log_name = base_path + "log/ffmpeg_log_" + current_time_str + ".txt";
     string video_name = base_path + "video/output_" + current_time_str + "." + video_format;
     string frame_dir = base_path + "picture_frame/" + current_time_str;
@@ -214,6 +218,7 @@ int main(int argc, char** argv) {
     FILE* ffmpeg = popen(ffmpeg_cmd.str().c_str(), "w");
     if (!ffmpeg) {
         cerr << "Error: Could not open FFmpeg." << endl;
+        log_file << "Error: Could not open FFmpeg." << endl;
         return -1;
     }
 
@@ -225,6 +230,7 @@ int main(int argc, char** argv) {
         if (!ret) {
             frame_loss++;
             cerr << "Error: Camera connection lost. Exiting..." << endl;
+            log_file << "Error: Camera connection lost. Exiting..." << endl;
             break;
         }
 
@@ -269,16 +275,13 @@ int main(int argc, char** argv) {
             ss << elapsed_loop_time << "ms" << ", Total frame: " << frame_count;
             log_with_time(ss.str());
         }
-        
-        //when no sleep cpu cycle will run as much as they can so could cause faster fps than you have set
-        //also discarding it sometimes may not work exit key
-        //double sleep_time = max(sleep_time_per_frame - duration_cast<microseconds>(steady_clock::now() - start_time).count(), 0.0);
-        //this_thread::sleep_for(microseconds(static_cast<int>(sleep_time)));
     }
 
     cap.release();
     destroyAllWindows();
     pclose(ffmpeg);
+    log_file.close();
 
     return 0;
 }
+
