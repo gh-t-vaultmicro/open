@@ -1,6 +1,8 @@
 #include <pcap.h>
 #include <iostream>
 
+
+
 void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
     std::cout << "패킷 길이: " << pkthdr->len << std::endl;
     std::cout << "캡처된 패킷 길이: " << pkthdr->caplen << std::endl;
@@ -22,7 +24,6 @@ int main() {
     pcap_if_t *interfaces, *device;
     pcap_t *handle;
 
-    // 네트워크 인터페이스 목록을 가져옴
     if (pcap_findalldevs(&interfaces, error_buffer) == -1) {
         std::cerr << "네트워크 장치를 찾을 수 없음: " << error_buffer << std::endl;
         return 1;
@@ -34,7 +35,10 @@ int main() {
     }
 
     // USB 패킷을 캡처할 장치를 선택 (예: 'usbmon0' 또는 다른 적절한 이름)
-    const char *device_name = "usbmon0";  // 이 이름은 실제 시스템에 따라 다를 수 있음
+    const char *device_name = "usbmon1";  
+    // 이 이름은 실제 시스템에 따라 다를 수 있음 ex) usbmon0 usbmon1
+    //one interface may have several devices
+    //to filter may need vendor id and product id
 
     // 장치 열기
     handle = pcap_open_live(device_name, BUFSIZ, 1, 1000, error_buffer);
