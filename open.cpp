@@ -17,7 +17,17 @@
 using namespace cv;
 using namespace std;
 using namespace chrono;
+
+#ifdef __linux__
+namespace fs = std::filesystem;
+#elif _WIN32
 namespace fs = std::__fs::filesystem;
+#elif __APPLE__
+namespace fs = std::__fs::filesystem;
+#else
+#error "Unknown or unsupported operating system"
+#endif
+
 
 bool verbose = false;
 ofstream log_file;
@@ -26,12 +36,13 @@ void show_usage(){
     cout << "----------------------------Usage---------------------------- " << endl;
     cout << "[-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]" << endl;
     cout << "e.g.) sudo ./open -d 0 -f 24 -w 1920 -h 1080 -v " << endl;
-    cout << "build) g++ -std=c++11 -o open open1slp.cpp `pkg-config --cflags --libs opencv4` " << endl;
+    cout << "build) g++ -std=c++11 -o open open.cpp `pkg-config --cflags --libs opencv4` " << endl;
     cout << "./open to show usage " << endl;
     cout << "Only detect less than 10 cameras " << endl;
     cout << "Igore the errors shown at the very first, -no device found " << endl;
     cout << "This shows the streaming screen and saves on file using ffmpeg " << endl;
     cout << "Each frames are captured on picture_frame " << endl;
+    cout << "If opencv is not found, try sudo apt install libopencv-dev" << endl;
 }
 
 int count_cameras() {
