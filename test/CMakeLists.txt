@@ -10,4 +10,4 @@ add_executable(opentest
         opentest.cpp
 )
 
-target_link_libraries(<executable name> ${OpenCV_LIBS})
+target_link_libraries(opentest ${OpenCV_LIBS})
