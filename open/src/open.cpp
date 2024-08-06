@@ -113,6 +113,7 @@ void log_with_time(const string& message) {
     log_file << ss.str() << ": " << message << endl;
 }
 
+
 string getCurrentTimeFormatted() {
     auto t = time(nullptr);
     auto tm = *localtime(&t);
@@ -158,7 +159,7 @@ int main(int argc, char** argv) {
                 break;
             case 'c':
                 codec = stoi(optarg);
-                break;
+                break;\
             case 'p':
                 pixel_format = stoi(optarg);
                 break;
@@ -217,7 +218,7 @@ int main(int argc, char** argv) {
 
     // Create directory for frames
     fs::create_directories(frame_dir);
-
+    
     // Start FFmpeg process with log level set to error and log output redirected to a file
     stringstream ffmpeg_cmd;
 
@@ -248,6 +249,7 @@ int main(int argc, char** argv) {
 
         // Write frame to FFmpeg
         fwrite(frame.data, 1, frame.total() * frame.elemSize(), ffmpeg);
+
         // Save frame as JPEG
         stringstream frame_path_ss;
         frame_path_ss << frame_dir << "/frame_" << setfill('0') << setw(6) << frame_count << ".jpg";
@@ -266,6 +268,8 @@ int main(int argc, char** argv) {
             << ", Frame loss: " << frame_loss 
             << ", Total frame: " << frame_count;
             log_with_time(ss.str());
+
+
 
             frames_last_second = 0;
             frame_loss = 0;

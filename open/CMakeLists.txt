@@ -11,8 +11,6 @@ project(
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_C_COMPILER "gcc")
-set(CMAKE_CXX_COMPILER "g++")
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(OPENCV REQUIRED opencv4)
@@ -39,3 +37,5 @@ target_link_libraries(
         ${OPENCV_LIBRARIES}
 		#${CMAKE_SOURCE_DIR}/lib/opencv.lib
 )
+
+include(gtest.cmake)
