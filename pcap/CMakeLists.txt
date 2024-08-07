@@ -25,6 +25,7 @@ add_executable(
     ${CMAKE_SOURCE_DIR}/src/pcapl.cpp
 )
 
+
 include_directories(
     #${CMAKE_SOURCE_DIR}/include
     ${PCAP_INCLUDE_DIRS}
@@ -41,5 +42,5 @@ target_link_libraries(
 
 #include(gtest.cmake)
 
-
+#sudo modprobe usbmon
 #g++ -o pcapl pcapl.cpp -lpcap

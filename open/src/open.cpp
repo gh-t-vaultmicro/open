@@ -4,9 +4,10 @@
 #include <thread>
 #include <iomanip>
 #include <sstream>
-#include <getopt.h>
 #include <filesystem>
 #include <fstream>
+#include <getopt.h>
+
 
 #ifdef _WIN32
 #include <windows.h>
@@ -151,27 +152,13 @@ int main(int argc, char** argv) {
     int opt;
     while ((opt = getopt(argc, argv, "d:f:c:w:h:v")) != -1) {
         switch (opt) {
-            case 'd':
-                desired_device_id = stoi(optarg);
-                break;
-            case 'f':
-                fps = stoi(optarg);
-                break;
-            case 'c':
-                codec = stoi(optarg);
-                break;\
-            case 'p':
-                pixel_format = stoi(optarg);
-                break;
-            case 'w':
-                width = stoi(optarg);
-                break;
-            case 'h':
-                height = stoi(optarg);
-                break;
-            case 'v':
-                verbose = true;
-                break;
+            case 'd': desired_device_id = stoi(optarg); break;
+            case 'f':fps = stoi(optarg); break;
+            case 'c': codec = stoi(optarg); break;
+            case 'p': pixel_format = stoi(optarg); break;
+            case 'w': width = stoi(optarg); break;
+            case 'h': height = stoi(optarg); break;
+            case 'v': verbose = true; break;
             default:
                 cerr << "Usage: " << argv[0] << " [-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]" << endl;
                 log_file << "Usage: " << argv[0] << " [-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]" << endl;

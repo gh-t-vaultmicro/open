@@ -1,7 +1,0 @@
-List Cameras
- 
-Device ID: 0
-Resolution: 800x448
-FPS: 30
-FOURCC: 
-
