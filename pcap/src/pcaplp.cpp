@@ -3,6 +3,7 @@
 #include <fstream>
 #include <ctime>
 #include <iomanip>
+#include <cstdint>
 #include <sstream>
 #include <filesystem>
 
@@ -17,32 +18,51 @@ string getCurrentTimeFormatted() {
     return oss.str();
 }
 
-//pkthdr: packet header
 void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
     ofstream *log_file = reinterpret_cast<ofstream*>(user_data);
 
-    // Print packet information to log file and terminal
-    *log_file << "Packet Length: " << pkthdr->len << endl;
-    *log_file << "Captured Packet Length: " << pkthdr->caplen << endl;
-    *log_file << "Packet Time Stamp: " << pkthdr->ts.tv_sec << "." << pkthdr->ts.tv_usec << endl;
+    time_t raw_time = pkthdr->ts.tv_sec;
+    struct tm* timeinfo = localtime(&raw_time);
+    char time_str[20];
+    strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", timeinfo);
+    
 
-    cout << "Packet Length: " << pkthdr->len << endl;
-    cout << "Captured Packet Length: " << pkthdr->caplen << endl;
+    // Print packet information to log file and terminal
+    *log_file << "Packet Time Stamp: " << pkthdr->ts.tv_sec << "." << pkthdr->ts.tv_usec << endl;
+    *log_file << "Timestamp: " << time_str << "." << pkthdr->ts.tv_usec << endl;
+    *log_file << "Packet Length: " << pkthdr->len << " bytes" << endl;
+    *log_file << "Captured Packet Length: " <<  pkthdr->caplen << " bytes" << endl;
+    
+    cout << "Timestamp: " << time_str << "." << pkthdr->ts.tv_usec << endl; 
+    cout << "Packet Length: " << pkthdr->len << " bytes" << endl;
+    cout << "Captured Packet Length: " << pkthdr->caplen << " bytes" << endl;
     cout << "Packet Time Stamp: " << pkthdr->ts.tv_sec << "." << pkthdr->ts.tv_usec << endl;
 
-    // Convert packet data to hexadecimal and print to log file and terminal
-    for (unsigned int i = 0; i < pkthdr->len; i++) {
-        *log_file << hex << setw(2) << setfill('0') << (int)packet[i];
-        cout << hex << setw(2) << setfill('0') << (int)packet[i];
+    // // Convert packet data to hexadecimal and print to log file and terminal
+    // // Use to print binary data on terminal window
+    // for (u_int i = 0; i < pkthdr->len; i++) {
+    //     *log_file << hex << setw(2) << setfill('0') << (int)packet[i];
+    //     cout << hex << setw(2) << setfill('0') << (int)packet[i];
 
-        if (i % 16 == 15 || i == pkthdr->len - 1) {
+    //     if (i % 16 == 15 || i == pkthdr->len - 1) {
+    //         *log_file << endl;
+    //         cout << endl;
+    //     } else {
+    //         *log_file << " ";
+    //         cout << " ";
+    //     }
+    // }
+
+    // Format packet data into multiple lines for better readability
+    for (u_int i = 0; i < pkthdr->caplen; ++i) {
+        if (i % 16 == 0 && i != 0) {
             *log_file << endl;
-            cout << endl;
-        } else {
-            *log_file << " ";
-            cout << " ";
         }
+        *log_file << hex << setw(2) << setfill('0') << static_cast<int>(packet[i]) << " ";
     }
+
+    *log_file << dec << endl; // Reset to decimal format, nessary for the time stamp
+
 }
 
 int main() {
@@ -61,7 +81,7 @@ int main() {
     }
 
     //Log file path
-    string log_path = log_dir + "/log_pcap" + current_time_str + ".txt";
+    string log_path = log_dir + "/log_pcap_" + current_time_str + ".txt";
 
     // Open log file
     ofstream log_file;
@@ -73,40 +93,47 @@ int main() {
     log_file << "Log file created" << endl;
 
 
-    // Find network devices
+    // Find Devices
     char error_buffer[PCAP_ERRBUF_SIZE];
     pcap_if_t *interfaces, *device;
-    pcap_t *handle;
 
     if (pcap_findalldevs(&interfaces, error_buffer) == -1) {
-        cerr << "Cannot find network device: " << error_buffer << endl;
+        cerr << "Error finding Device: " << error_buffer << endl;
         log_file.close();
         return 1;
     }
 
-    cout << "Network device list:" << endl;
+    // Print the list of devices
+    int i = 0;
     for (device = interfaces; device != nullptr; device = device->next) {
-        cout << device->name << endl;
+        cout << ++i << ": " << (device->name ? device->name : "No name") << endl;
+        if (device->description)
+            cout << " (" << device->description << ")" << endl;
     }
+    int dev_num;
+    cout << "Enter the number of the device to use: \n";
+    cout << "usbmonX (X is the number of the USB bus to monitor) \n" << endl;
+    cout << "Type lsusb in terminal to see the USB bus number \n" << endl;
+    cin >> dev_num;
 
-    // USB packet capture device (e.g., 'usbmon0' or 'usbmon1')
-    const char *device_name = "usbmon1";  
+    //Open the selected device
+    for (device = interfaces, i = 0; i < dev_num - 1; device = device->next, ++i);
 
-    // Open device
-    handle = pcap_open_live(device_name, BUFSIZ, 1, 1000, error_buffer);
-    if (handle == nullptr) {
-        cerr << "Cannot open device: " << error_buffer << endl;
+    pcap_t *handle = pcap_open_live(device->name, BUFSIZ, 1, 1000, error_buffer);
+    if (handle == NULL) {
+        cerr << "Error opening device: " << error_buffer << endl;
         pcap_freealldevs(interfaces);
-        log_file.close();
         return 1;
     }
+
+    // Free the device list
+    pcap_freealldevs(interfaces);
 
     // Start packet capture
     pcap_loop(handle, 0, packet_handler, reinterpret_cast<u_char*>(&log_file));
 
     // Close the handle and free the device list
     pcap_close(handle);
-    pcap_freealldevs(interfaces);
     log_file.close();
 
     return 0;

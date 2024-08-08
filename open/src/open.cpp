@@ -153,7 +153,7 @@ int main(int argc, char** argv) {
     while ((opt = getopt(argc, argv, "d:f:c:w:h:v")) != -1) {
         switch (opt) {
             case 'd': desired_device_id = stoi(optarg); break;
-            case 'f':fps = stoi(optarg); break;
+            case 'f': fps = stoi(optarg); break;
             case 'c': codec = stoi(optarg); break;
             case 'p': pixel_format = stoi(optarg); break;
             case 'w': width = stoi(optarg); break;

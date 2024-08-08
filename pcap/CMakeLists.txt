@@ -3,9 +3,9 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(
-    pcapl
+    pcaplp
     DESCRIPTION "Packet Capture"
-    VERSION 0.0.1
+    VERSION 0.0.2
     LANGUAGES CXX
 )
 
@@ -21,8 +21,8 @@ pkg_check_modules(PCAP REQUIRED libpcap)
 # )
 
 add_executable(
-    pcapl
-    ${CMAKE_SOURCE_DIR}/src/pcapl.cpp
+    pcaplp
+    ${CMAKE_SOURCE_DIR}/src/pcaplp.cpp
 )
 
 
@@ -32,7 +32,7 @@ include_directories(
 )
 
 target_link_libraries(
-    pcapl
+    pcaplp
     PRIVATE
         #dlib
         ${PCAP_LIBRARIES}
@@ -43,4 +43,4 @@ target_link_libraries(
 #include(gtest.cmake)
 
 #sudo modprobe usbmon
-#g++ -o pcapl pcapl.cpp -lpcap
+#g++ -o pcaplp pcaplp.cpp -lpcap
