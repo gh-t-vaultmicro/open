@@ -119,7 +119,7 @@ string getCurrentTimeFormatted() {
     auto t = time(nullptr);
     auto tm = *localtime(&t);
     ostringstream oss;
-    oss << put_time(&tm, "%S-%M-%H-%d-%m-%Y");
+    oss << put_time(&tm, "%Y-%m-%d-%H-%M-%S");
     return oss.str();
 }
 
