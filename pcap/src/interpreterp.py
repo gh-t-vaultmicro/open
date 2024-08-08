@@ -1,3 +1,5 @@
+#interpreterp.py
+
 import re
 import os
 
@@ -108,7 +110,7 @@ def parse_file(file_path):
     packets = [packet.strip() for packet in packets if packet.strip()]
 
     # Create a log file to save the parsed data
-    log_file_path = os.path.splitext(file_path)[0] + "_parsed_log_tmp.txt"
+    log_file_path = os.path.splitext(file_path)[0] + "_parsed_log.txt"
     with open(log_file_path, 'w') as log_file:
         total_packets = len(packets)
         iso_success_count = 0

@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <sstream>
 #include <filesystem>
+#include <cstring>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -65,9 +66,14 @@ void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u
 
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc != 3 || strcmp(argv[1], "-d") != 0) {
+        cerr << "Usage: " << argv[0] << " -d usbmonX" << endl;
+        return 1;
+    }
+
+    string selected_device = argv[2];
     cout << "If code is not working try sudo modeprobe usbmon" << endl;
-    cout << "Or try change usbmon number in the code" << endl;
     cout << endl;
 
     // Get current time formatted string
@@ -80,6 +86,53 @@ int main() {
         fs::create_directory(log_dir);
     }
 
+    // Find Devices
+    char error_buffer[PCAP_ERRBUF_SIZE];
+    pcap_if_t *interfaces, *device;
+
+    if (pcap_findalldevs(&interfaces, error_buffer) == -1) {
+        cerr << "Error finding Device: " << error_buffer << endl;
+        return 1;
+    }
+
+    // Print the list of devices
+    int i = 0;
+    for (device = interfaces; device != nullptr; device = device->next) {
+        cout << ++i << ": " << (device->name ? device->name : "No name") << endl;
+        if (device->description)
+            cout << " (" << device->description << ")" << endl;
+    }
+    
+    // int dev_num;
+    // cout << "Enter the number of the device to use: \n";
+    // cout << "usbmonX (X is the number of the USB bus to monitor) \n" << endl;
+    // cout << "Type lsusb in terminal to see the USB bus number \n" << endl;
+    // cin >> dev_num;
+
+    // //Open the selected device
+    // for (device = interfaces, i = 0; i < dev_num - 1; device = device->next, ++i);
+
+        // Find the specified device
+    for (device = interfaces; device != nullptr; device = device->next) {
+        if (selected_device == device->name) {
+            break;
+        }
+    }
+
+    if (device == nullptr) {
+        cerr << "Error: Device " << selected_device << " not found" << endl;
+        pcap_freealldevs(interfaces);
+        return 1;
+    }
+
+
+    pcap_t *handle = pcap_open_live(device->name, BUFSIZ, 1, 1000, error_buffer);
+    if (handle == NULL) {
+        cerr << "Error opening device: " << error_buffer << endl;
+        pcap_freealldevs(interfaces);
+        return 1;
+    }
+    
     //Log file path
     string log_path = log_dir + "/log_pcap_" + current_time_str + ".txt";
 
@@ -91,40 +144,6 @@ int main() {
         return 1;
     }
     log_file << "Log file created" << endl;
-
-
-    // Find Devices
-    char error_buffer[PCAP_ERRBUF_SIZE];
-    pcap_if_t *interfaces, *device;
-
-    if (pcap_findalldevs(&interfaces, error_buffer) == -1) {
-        cerr << "Error finding Device: " << error_buffer << endl;
-        log_file.close();
-        return 1;
-    }
-
-    // Print the list of devices
-    int i = 0;
-    for (device = interfaces; device != nullptr; device = device->next) {
-        cout << ++i << ": " << (device->name ? device->name : "No name") << endl;
-        if (device->description)
-            cout << " (" << device->description << ")" << endl;
-    }
-    int dev_num;
-    cout << "Enter the number of the device to use: \n";
-    cout << "usbmonX (X is the number of the USB bus to monitor) \n" << endl;
-    cout << "Type lsusb in terminal to see the USB bus number \n" << endl;
-    cin >> dev_num;
-
-    //Open the selected device
-    for (device = interfaces, i = 0; i < dev_num - 1; device = device->next, ++i);
-
-    pcap_t *handle = pcap_open_live(device->name, BUFSIZ, 1, 1000, error_buffer);
-    if (handle == NULL) {
-        cerr << "Error opening device: " << error_buffer << endl;
-        pcap_freealldevs(interfaces);
-        return 1;
-    }
 
     // Free the device list
     pcap_freealldevs(interfaces);
