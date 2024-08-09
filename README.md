@@ -10,7 +10,7 @@ isochronous webcam shows specific loss packet
 
 ## How to build
 
-###OPEN
+### OPEN
 0. Go to open directory
 1. Go to build directory
 2. cmake ..
@@ -28,7 +28,7 @@ isochronous webcam shows specific loss packet
 11. Go to picture_frame directory to date-time directory
 12. Every frame pictured with .jpg
  
-###PCAP
+### PCAP
 0. Go to pcap directory
 1. Go to build directory
 2. cmake ..
@@ -42,7 +42,7 @@ isochronous webcam shows specific loss packet
 6. Go to log directory
 7. log file made with name date-time.txt
 
-###INTERPRETER
+### INTERPRETER
 0. Go to pcap directory
 1. Go to src directory
 2. python3 interpreterp.py
