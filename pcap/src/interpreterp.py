@@ -1,5 +1,3 @@
-#interpreterp.py
-
 import re
 import os
 
@@ -120,11 +118,14 @@ def parse_file(file_path):
 
         for packet in packets:
             lines = packet.split('\n')
-            if len(lines) < 8:
+            if len(lines) < 9:
                 continue  # Skip incomplete packets
-            packet_data = ''.join(lines[4:8]).replace(' ', '')
+            timestamp = lines[1].split(': ')[1]  # Extract Timestamp
+            chrono_time = lines[2].split(': ')[1]  # Extract Chrono Time
+            packet_data = ''.join(lines[5:9]).replace(' ', '')
 
             parsed_data = parse_packet_data(packet_data)
+            parsed_data['Chrono Time'] = chrono_time  # Add Chrono Time to parsed data
             urb_transfer_type = parsed_data['URB Transfer Type']
             urb_status = parsed_data['URB Status']
 
@@ -144,7 +145,9 @@ def parse_file(file_path):
                         iso_fail_count += 1
                         iso_fail_packets.append(packet)
 
-            log_file.write(f"Packet: {lines[0]}\n")
+            # Log format updated to include Timestamp and Chrono Time
+            log_file.write(f"Packet:      {timestamp}\n")
+            log_file.write(f"Chrono Time: {chrono_time}\n")
             for key, value in parsed_data.items():
                 log_file.write(f"{key}: {value}\n")
             log_file.write("\n")
@@ -169,6 +172,7 @@ log_file_path = input("Type path to your file: ")
 if not log_file_path:
     print("No path provided. Using default path.")
     print("Showing example")
-    log_file_path = "../log/log_pcap_2024-08-08-11-22-51.txt"
+    default_log_file_path = "../log/log_pcap_2024-08-09-11-22-51.txt"
+    log_file_path = default_log_file_path
 
 parse_file(log_file_path)

@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pcaplp
+# Target rules for targets named pcaplpc
 
 # Build rule for target.
-pcaplp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pcaplp
-.PHONY : pcaplp
+pcaplpc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pcaplpc
+.PHONY : pcaplpc
 
 # fast build rule for target.
-pcaplp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/build
-.PHONY : pcaplp/fast
+pcaplpc/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/build
+.PHONY : pcaplpc/fast
 
-src/pcaplp.o: src/pcaplp.cpp.o
-.PHONY : src/pcaplp.o
+src/pcaplpc.o: src/pcaplpc.cpp.o
+.PHONY : src/pcaplpc.o
 
 # target to build an object file
-src/pcaplp.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/src/pcaplp.cpp.o
-.PHONY : src/pcaplp.cpp.o
+src/pcaplpc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/src/pcaplpc.cpp.o
+.PHONY : src/pcaplpc.cpp.o
 
-src/pcaplp.i: src/pcaplp.cpp.i
-.PHONY : src/pcaplp.i
+src/pcaplpc.i: src/pcaplpc.cpp.i
+.PHONY : src/pcaplpc.i
 
 # target to preprocess a source file
-src/pcaplp.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/src/pcaplp.cpp.i
-.PHONY : src/pcaplp.cpp.i
+src/pcaplpc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/src/pcaplpc.cpp.i
+.PHONY : src/pcaplpc.cpp.i
 
-src/pcaplp.s: src/pcaplp.cpp.s
-.PHONY : src/pcaplp.s
+src/pcaplpc.s: src/pcaplpc.cpp.s
+.PHONY : src/pcaplpc.s
 
 # target to generate assembly for a file
-src/pcaplp.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/src/pcaplp.cpp.s
-.PHONY : src/pcaplp.cpp.s
+src/pcaplpc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/src/pcaplpc.cpp.s
+.PHONY : src/pcaplpc.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... pcaplp"
-	@echo "... src/pcaplp.o"
-	@echo "... src/pcaplp.i"
-	@echo "... src/pcaplp.s"
+	@echo "... pcaplpc"
+	@echo "... src/pcaplpc.o"
+	@echo "... src/pcaplpc.i"
+	@echo "... src/pcaplpc.s"
 .PHONY : help
 
 

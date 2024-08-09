@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/mint/open/pcap/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/pcaplp.dir/all
+all: CMakeFiles/pcaplpc.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/pcaplp.dir/clean
+clean: CMakeFiles/pcaplpc.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/pcaplp.dir
+# Target rules for target CMakeFiles/pcaplpc.dir
 
 # All Build rule for target.
-CMakeFiles/pcaplp.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mint/open/pcap/build/CMakeFiles --progress-num=1,2 "Built target pcaplp"
-.PHONY : CMakeFiles/pcaplp.dir/all
+CMakeFiles/pcaplpc.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/mint/open/pcap/build/CMakeFiles --progress-num=1,2 "Built target pcaplpc"
+.PHONY : CMakeFiles/pcaplpc.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/pcaplp.dir/rule: cmake_check_build_system
+CMakeFiles/pcaplpc.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mint/open/pcap/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pcaplp.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pcaplpc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mint/open/pcap/build/CMakeFiles 0
-.PHONY : CMakeFiles/pcaplp.dir/rule
+.PHONY : CMakeFiles/pcaplpc.dir/rule
 
 # Convenience name for target.
-pcaplp: CMakeFiles/pcaplp.dir/rule
-.PHONY : pcaplp
+pcaplpc: CMakeFiles/pcaplpc.dir/rule
+.PHONY : pcaplpc
 
 # clean rule for target.
-CMakeFiles/pcaplp.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplp.dir/build.make CMakeFiles/pcaplp.dir/clean
-.PHONY : CMakeFiles/pcaplp.dir/clean
+CMakeFiles/pcaplpc.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcaplpc.dir/build.make CMakeFiles/pcaplpc.dir/clean
+.PHONY : CMakeFiles/pcaplpc.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,5 +1,4 @@
 //open.cpp
-
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <chrono>
@@ -208,6 +207,7 @@ int main(int argc, char** argv) {
     // Create directory for frames
     fs::create_directories(frame_dir);
     
+    //FFMPEG COMMAND
     // Start FFmpeg process with log level set to error and log output redirected to a file
     stringstream ffmpeg_cmd;
 
@@ -223,6 +223,7 @@ int main(int argc, char** argv) {
         log_file << "Error: Could not open FFmpeg." << endl;
         return -1;
     }
+
 
     while (true) {
         auto start_time = steady_clock::now();
