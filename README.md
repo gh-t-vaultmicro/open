@@ -2,10 +2,10 @@
 
 ## Available
 
-In this project directory, you can run: open, pcap, interpreter
-open captures the frame from /dev/video* saves into logs, video, pictures
-pcap captures the packet from /dev/usbmon* saves into log showing raw packets
-interpreter changes log to parsed_log showing success rate of usb video packet tranfer at the end
+In this project directory, you can run: open, pcap, interpreter <br/>
+open captures the frame from /dev/video* saves into logs, video, pictures <br/>
+pcap captures the packet from /dev/usbmon* saves into log showing raw packets <br/>
+interpreter changes log to parsed_log showing success rate of usb video packet tranfer at the end <br/>
 isochronous webcam shows specific loss packet
 
 ## How to build
