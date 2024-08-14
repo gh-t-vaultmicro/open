@@ -155,12 +155,12 @@ def parse_file(file_path):
                         iso_fail_count += 1
                         iso_fail_packets.append(packet)
 
-            # # Log format updated to include Timestamp and Chrono Time
-            # log_file.write(f"Packet:      {timestamp}\n")
-            # log_file.write(f"Chrono Time: {chrono_time}\n")
-            # for key, value in parsed_data.items():
-            #     log_file.write(f"{key}: {value}\n")
-            # log_file.write("\n")
+            # Log format updated to include Timestamp and Chrono Time
+            log_file.write(f"Packet:      {timestamp}\n")
+            log_file.write(f"Chrono Time: {chrono_time}\n")
+            for key, value in parsed_data.items():
+                log_file.write(f"{key}: {value}\n")
+            log_file.write("\n")
 
         log_file.write(f"--------------------------------------------------------------------------------\n")
         #total_URB = URB_status_count['Operation Now in Progress'] + URB_status_count['No Such File or Directory'] + URB_status_count['SUCCESS']
