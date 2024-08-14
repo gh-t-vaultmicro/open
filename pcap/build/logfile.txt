@@ -1,0 +1,9 @@
+
+Capture Statistics:
+Packets received: 256
+Packets dropped by overall: 446
+Packets dropped by interface: 0
+Capture Statistics:
+Packets received: 219
+Packets dropped by overall: 403
+Packets dropped by interface: 0
