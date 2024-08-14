@@ -1,8 +1,32 @@
 [
 {
   "directory": "/home/mint/open/open/build",
-  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/openmt.dir/src/openmt.cpp.o -c /home/mint/open/open/src/openmt.cpp",
-  "file": "/home/mint/open/open/src/openmt.cpp",
-  "output": "CMakeFiles/openmt.dir/src/openmt.cpp.o"
+  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/open_d.dir/src/open.cpp.o -c /home/mint/open/open/src/open.cpp",
+  "file": "/home/mint/open/open/src/open.cpp",
+  "output": "CMakeFiles/open_d.dir/src/open.cpp.o"
+},
+{
+  "directory": "/home/mint/open/open/build",
+  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/open_d.dir/src/camera.cpp.o -c /home/mint/open/open/src/camera.cpp",
+  "file": "/home/mint/open/open/src/camera.cpp",
+  "output": "CMakeFiles/open_d.dir/src/camera.cpp.o"
+},
+{
+  "directory": "/home/mint/open/open/build",
+  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/open_d.dir/src/logger.cpp.o -c /home/mint/open/open/src/logger.cpp",
+  "file": "/home/mint/open/open/src/logger.cpp",
+  "output": "CMakeFiles/open_d.dir/src/logger.cpp.o"
+},
+{
+  "directory": "/home/mint/open/open/build",
+  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/open_d.dir/src/mtframe.cpp.o -c /home/mint/open/open/src/mtframe.cpp",
+  "file": "/home/mint/open/open/src/mtframe.cpp",
+  "output": "CMakeFiles/open_d.dir/src/mtframe.cpp.o"
+},
+{
+  "directory": "/home/mint/open/open/build",
+  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/open_d.dir/src/timer.cpp.o -c /home/mint/open/open/src/timer.cpp",
+  "file": "/home/mint/open/open/src/timer.cpp",
+  "output": "CMakeFiles/open_d.dir/src/timer.cpp.o"
 }
 ]

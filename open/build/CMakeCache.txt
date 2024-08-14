@@ -200,19 +200,19 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=Capturing Frames
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=openmt
+CMAKE_PROJECT_NAME:STATIC=open_d
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION:STATIC=0.0.1
+CMAKE_PROJECT_VERSION:STATIC=0.1.0
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_MAJOR:STATIC=0
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MINOR:STATIC=0
+CMAKE_PROJECT_VERSION_MINOR:STATIC=1
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_PATCH:STATIC=1
+CMAKE_PROJECT_VERSION_PATCH:STATIC=0
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
@@ -379,6 +379,15 @@ open_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 open_SOURCE_DIR:STATIC=/home/mint/open/open
+
+//Value Computed by CMake
+open_d_BINARY_DIR:STATIC=/home/mint/open/open/build
+
+//Value Computed by CMake
+open_d_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+open_d_SOURCE_DIR:STATIC=/home/mint/open/open
 
 //Value Computed by CMake
 openmt_BINARY_DIR:STATIC=/home/mint/open/open/build

@@ -117,41 +117,137 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named openmt
+# Target rules for targets named open_d
 
 # Build rule for target.
-openmt: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 openmt
-.PHONY : openmt
+open_d: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 open_d
+.PHONY : open_d
 
 # fast build rule for target.
-openmt/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmt.dir/build.make CMakeFiles/openmt.dir/build
-.PHONY : openmt/fast
+open_d/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/build
+.PHONY : open_d/fast
 
-src/openmt.o: src/openmt.cpp.o
-.PHONY : src/openmt.o
+src/camera.o: src/camera.cpp.o
+.PHONY : src/camera.o
 
 # target to build an object file
-src/openmt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmt.dir/build.make CMakeFiles/openmt.dir/src/openmt.cpp.o
-.PHONY : src/openmt.cpp.o
+src/camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/camera.cpp.o
+.PHONY : src/camera.cpp.o
 
-src/openmt.i: src/openmt.cpp.i
-.PHONY : src/openmt.i
+src/camera.i: src/camera.cpp.i
+.PHONY : src/camera.i
 
 # target to preprocess a source file
-src/openmt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmt.dir/build.make CMakeFiles/openmt.dir/src/openmt.cpp.i
-.PHONY : src/openmt.cpp.i
+src/camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/camera.cpp.i
+.PHONY : src/camera.cpp.i
 
-src/openmt.s: src/openmt.cpp.s
-.PHONY : src/openmt.s
+src/camera.s: src/camera.cpp.s
+.PHONY : src/camera.s
 
 # target to generate assembly for a file
-src/openmt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmt.dir/build.make CMakeFiles/openmt.dir/src/openmt.cpp.s
-.PHONY : src/openmt.cpp.s
+src/camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/camera.cpp.s
+.PHONY : src/camera.cpp.s
+
+src/logger.o: src/logger.cpp.o
+.PHONY : src/logger.o
+
+# target to build an object file
+src/logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/logger.cpp.o
+.PHONY : src/logger.cpp.o
+
+src/logger.i: src/logger.cpp.i
+.PHONY : src/logger.i
+
+# target to preprocess a source file
+src/logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/logger.cpp.i
+.PHONY : src/logger.cpp.i
+
+src/logger.s: src/logger.cpp.s
+.PHONY : src/logger.s
+
+# target to generate assembly for a file
+src/logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/logger.cpp.s
+.PHONY : src/logger.cpp.s
+
+src/mtframe.o: src/mtframe.cpp.o
+.PHONY : src/mtframe.o
+
+# target to build an object file
+src/mtframe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/mtframe.cpp.o
+.PHONY : src/mtframe.cpp.o
+
+src/mtframe.i: src/mtframe.cpp.i
+.PHONY : src/mtframe.i
+
+# target to preprocess a source file
+src/mtframe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/mtframe.cpp.i
+.PHONY : src/mtframe.cpp.i
+
+src/mtframe.s: src/mtframe.cpp.s
+.PHONY : src/mtframe.s
+
+# target to generate assembly for a file
+src/mtframe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/mtframe.cpp.s
+.PHONY : src/mtframe.cpp.s
+
+src/open.o: src/open.cpp.o
+.PHONY : src/open.o
+
+# target to build an object file
+src/open.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/open.cpp.o
+.PHONY : src/open.cpp.o
+
+src/open.i: src/open.cpp.i
+.PHONY : src/open.i
+
+# target to preprocess a source file
+src/open.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/open.cpp.i
+.PHONY : src/open.cpp.i
+
+src/open.s: src/open.cpp.s
+.PHONY : src/open.s
+
+# target to generate assembly for a file
+src/open.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/open.cpp.s
+.PHONY : src/open.cpp.s
+
+src/timer.o: src/timer.cpp.o
+.PHONY : src/timer.o
+
+# target to build an object file
+src/timer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.o
+.PHONY : src/timer.cpp.o
+
+src/timer.i: src/timer.cpp.i
+.PHONY : src/timer.i
+
+# target to preprocess a source file
+src/timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.i
+.PHONY : src/timer.cpp.i
+
+src/timer.s: src/timer.cpp.s
+.PHONY : src/timer.s
+
+# target to generate assembly for a file
+src/timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.s
+.PHONY : src/timer.cpp.s
 
 # Help Target
 help:
@@ -161,10 +257,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... openmt"
-	@echo "... src/openmt.o"
-	@echo "... src/openmt.i"
-	@echo "... src/openmt.s"
+	@echo "... open_d"
+	@echo "... src/camera.o"
+	@echo "... src/camera.i"
+	@echo "... src/camera.s"
+	@echo "... src/logger.o"
+	@echo "... src/logger.i"
+	@echo "... src/logger.s"
+	@echo "... src/mtframe.o"
+	@echo "... src/mtframe.i"
+	@echo "... src/mtframe.s"
+	@echo "... src/open.o"
+	@echo "... src/open.i"
+	@echo "... src/open.s"
+	@echo "... src/timer.o"
+	@echo "... src/timer.i"
+	@echo "... src/timer.s"
 .PHONY : help
 
 

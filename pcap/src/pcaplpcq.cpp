@@ -185,7 +185,7 @@ int main(int argc, char *argv[]) {
     }
     
     handle = pcap_open_live(device->name, buffer_size, 1, 1000, error_buffer);
-    if (handle == NULL) {
+    if (handle == nullptr) {
         cerr << "Error opening device: " << error_buffer << endl;
         pcap_freealldevs(interfaces);
         return 1;

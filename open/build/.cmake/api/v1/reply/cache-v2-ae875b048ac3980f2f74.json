@@ -1159,7 +1159,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "openmt"
+			"value" : "open_d"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION",
@@ -1171,7 +1171,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "0.0.1"
+			"value" : "0.1.0"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION_MAJOR",
@@ -1195,7 +1195,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "0"
+			"value" : "1"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION_PATCH",
@@ -1207,7 +1207,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "1"
+			"value" : "0"
 		},
 		{
 			"name" : "CMAKE_PROJECT_VERSION_TWEAK",
@@ -2511,6 +2511,42 @@
 		},
 		{
 			"name" : "open_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/mint/open/open"
+		},
+		{
+			"name" : "open_d_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/mint/open/open/build"
+		},
+		{
+			"name" : "open_d_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "open_d_SOURCE_DIR",
 			"properties" : 
 			[
 				{

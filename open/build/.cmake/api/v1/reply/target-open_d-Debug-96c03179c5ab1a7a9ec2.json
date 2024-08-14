@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "openmt"
+			"path" : "open_d"
 		}
 	],
 	"backtrace" : 1,
@@ -32,7 +32,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 27,
+				"line" : 31,
 				"parent" : 0
 			},
 			{
@@ -70,11 +70,15 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2,
+				3,
+				4
 			]
 		}
 	],
-	"id" : "openmt::@6890427a1f51a3e7e1df",
+	"id" : "open_d::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -124,8 +128,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "openmt",
-	"nameOnDisk" : "openmt",
+	"name" : "open_d",
+	"nameOnDisk" : "open_d",
 	"paths" : 
 	{
 		"build" : ".",
@@ -137,7 +141,11 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -146,7 +154,31 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/openmt.cpp",
+			"path" : "src/open.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/camera.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/logger.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/mtframe.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/timer.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

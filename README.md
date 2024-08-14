@@ -18,8 +18,8 @@ only works in linux
 3. make
 4. sudo ./open <br/>
 //to see the device status
-5. e.g.) sudo ./open -d 0 -f 24 -w 1920 -h 1080 -v <br/>
-//device number, fps, pixel width and height needs to be set <br/>
+5. e.g.) sudo sudo ./open -d 0 -f 30 -w 640 -h 480 -m 1 -s 1 -l 1 -v <br/>
+//device number, fps, pixel width and height, video, picture, log, verbose needs to be set <br/>
 //streaming screen will be shown
 6. q or ctrl+c to stop
 7. Go to log directory
@@ -51,9 +51,15 @@ only works in linux
 4. Go to log directory
 5. log file made with name date-time_parsed_log.txt
 
+### TO RUN ALL
+0. Go to build directory
+1. cmake ..
+2. make
+3. sudo ./synch
 
 #### now working
 
 Version 0.0.4 multi processing, multi threading included <br/>
 Working on test code <br/>
+
 

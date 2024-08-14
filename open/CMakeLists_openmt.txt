@@ -3,9 +3,9 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(
-    open_d
+    openmt
     DESCRIPTION "Capturing Frames"
-    VERSION 0.1.0
+    VERSION 0.0.1
     LANGUAGES CXX
 )
 
@@ -20,16 +20,12 @@ include_directories(
 )
 
 add_executable(
-    open_d
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/open.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/camera.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/logger.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/mtframe.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/timer.cpp
+    openmt
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/openmt.cpp
 )
 
 target_link_libraries(
-    open_d
+    openmt
     PRIVATE
         #${OPENCV_LIBRARIES}
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_core.so
