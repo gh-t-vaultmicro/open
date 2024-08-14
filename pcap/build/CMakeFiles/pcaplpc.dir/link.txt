@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/pcaplpc.dir/src/pcaplpc.cpp.o -o pcaplpc  -lpcap /home/mint/open/pcap/lib/libpcap.a 

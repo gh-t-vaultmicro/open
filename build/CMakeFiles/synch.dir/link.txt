@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/synch.dir/src/synch.cpp.o -o synch 

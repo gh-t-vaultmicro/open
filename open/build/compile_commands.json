@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/mint/open/open/build",
+  "command": "/usr/bin/clang++  -I/home/mint/open/open/include -g -std=gnu++17 -o CMakeFiles/openmt.dir/src/openmt.cpp.o -c /home/mint/open/open/src/openmt.cpp",
+  "file": "/home/mint/open/open/src/openmt.cpp",
+  "output": "CMakeFiles/openmt.dir/src/openmt.cpp.o"
+}
+]

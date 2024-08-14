@@ -1,0 +1,2 @@
+[rawvideo @ 0x63f79a0fb780] Invalid buffer size, packet size 3783680 < expected frame_size 6220800
+[vist#0:0/rawvideo @ 0x63f79a0fb600] Error submitting packet to decoder: Invalid argument

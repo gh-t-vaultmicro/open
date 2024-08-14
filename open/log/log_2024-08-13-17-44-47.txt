@@ -1,0 +1,5 @@
+
+Camera FPS set to: 0
+Camera resolution set to: 0x0
+
+Error: Camera connection lost. Exiting...

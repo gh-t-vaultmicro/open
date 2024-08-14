@@ -1,0 +1,7 @@
+List Cameras
+ 
+Device ID: 0
+Resolution: 640x480
+FPS: 30
+FOURCC: 
+

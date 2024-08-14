@@ -1,0 +1,3 @@
+/home/mint/open/open/build/CMakeFiles/openmt.dir
+/home/mint/open/open/build/CMakeFiles/edit_cache.dir
+/home/mint/open/open/build/CMakeFiles/rebuild_cache.dir
