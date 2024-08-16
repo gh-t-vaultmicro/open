@@ -6,7 +6,7 @@ method=url
 command=/usr/bin/cmake;-P;/home/mint/open/open/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/download-googletest-populate.cmake;COMMAND;/usr/bin/cmake;-P;/home/mint/open/open/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/verify-googletest-populate.cmake;COMMAND;/usr/bin/cmake;-P;/home/mint/open/open/build/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/extract-googletest-populate.cmake
 source_dir=/home/mint/open/open/build/_deps/googletest-src
 work_dir=/home/mint/open/open/build/_deps
-url(s)=https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+url(s)=https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
 hash=
 no_extract=
 

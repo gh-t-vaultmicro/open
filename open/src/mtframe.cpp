@@ -3,7 +3,6 @@
 #include "logger.hpp"
 
 void capture_frames(VideoCapture& cap, int fps) {
-    double sleep_time_per_frame = 1.0e6 / fps;
 
     while (!stop_capture) {
         Mat frame;

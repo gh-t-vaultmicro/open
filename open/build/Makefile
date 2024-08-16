@@ -85,6 +85,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mint/open/open/build/CMakeFiles /home/mint/open/open/build//CMakeFiles/progress.marks
@@ -117,6 +162,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named open_lib
+
+# Build rule for target.
+open_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 open_lib
+.PHONY : open_lib
+
+# fast build rule for target.
+open_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/build
+.PHONY : open_lib/fast
+
+#=============================================================================
 # Target rules for targets named open_d
 
 # Build rule for target.
@@ -129,11 +187,90 @@ open_d/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/build
 .PHONY : open_d/fast
 
+#=============================================================================
+# Target rules for targets named open_test
+
+# Build rule for target.
+open_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 open_test
+.PHONY : open_test
+
+# fast build rule for target.
+open_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_test.dir/build.make CMakeFiles/open_test.dir/build
+.PHONY : open_test/fast
+
+#=============================================================================
+# Target rules for targets named capture_test
+
+# Build rule for target.
+capture_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 capture_test
+.PHONY : capture_test
+
+# fast build rule for target.
+capture_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/build
+.PHONY : capture_test/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 src/camera.o: src/camera.cpp.o
 .PHONY : src/camera.o
 
 # target to build an object file
 src/camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/camera.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/camera.cpp.o
 .PHONY : src/camera.cpp.o
 
@@ -142,6 +279,7 @@ src/camera.i: src/camera.cpp.i
 
 # target to preprocess a source file
 src/camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/camera.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/camera.cpp.i
 .PHONY : src/camera.cpp.i
 
@@ -150,6 +288,7 @@ src/camera.s: src/camera.cpp.s
 
 # target to generate assembly for a file
 src/camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/camera.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/camera.cpp.s
 .PHONY : src/camera.cpp.s
 
@@ -158,6 +297,7 @@ src/logger.o: src/logger.cpp.o
 
 # target to build an object file
 src/logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/logger.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/logger.cpp.o
 .PHONY : src/logger.cpp.o
 
@@ -166,6 +306,7 @@ src/logger.i: src/logger.cpp.i
 
 # target to preprocess a source file
 src/logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/logger.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/logger.cpp.i
 .PHONY : src/logger.cpp.i
 
@@ -174,6 +315,7 @@ src/logger.s: src/logger.cpp.s
 
 # target to generate assembly for a file
 src/logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/logger.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
@@ -182,6 +324,7 @@ src/mtframe.o: src/mtframe.cpp.o
 
 # target to build an object file
 src/mtframe.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/mtframe.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/mtframe.cpp.o
 .PHONY : src/mtframe.cpp.o
 
@@ -190,6 +333,7 @@ src/mtframe.i: src/mtframe.cpp.i
 
 # target to preprocess a source file
 src/mtframe.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/mtframe.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/mtframe.cpp.i
 .PHONY : src/mtframe.cpp.i
 
@@ -198,6 +342,7 @@ src/mtframe.s: src/mtframe.cpp.s
 
 # target to generate assembly for a file
 src/mtframe.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/mtframe.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/mtframe.cpp.s
 .PHONY : src/mtframe.cpp.s
 
@@ -230,6 +375,7 @@ src/timer.o: src/timer.cpp.o
 
 # target to build an object file
 src/timer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/timer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.o
 .PHONY : src/timer.cpp.o
 
@@ -238,6 +384,7 @@ src/timer.i: src/timer.cpp.i
 
 # target to preprocess a source file
 src/timer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/timer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.i
 .PHONY : src/timer.cpp.i
 
@@ -246,8 +393,57 @@ src/timer.s: src/timer.cpp.s
 
 # target to generate assembly for a file
 src/timer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_lib.dir/build.make CMakeFiles/open_lib.dir/src/timer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.s
 .PHONY : src/timer.cpp.s
+
+tests/capture_test.o: tests/capture_test.cpp.o
+.PHONY : tests/capture_test.o
+
+# target to build an object file
+tests/capture_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/tests/capture_test.cpp.o
+.PHONY : tests/capture_test.cpp.o
+
+tests/capture_test.i: tests/capture_test.cpp.i
+.PHONY : tests/capture_test.i
+
+# target to preprocess a source file
+tests/capture_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/tests/capture_test.cpp.i
+.PHONY : tests/capture_test.cpp.i
+
+tests/capture_test.s: tests/capture_test.cpp.s
+.PHONY : tests/capture_test.s
+
+# target to generate assembly for a file
+tests/capture_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/tests/capture_test.cpp.s
+.PHONY : tests/capture_test.cpp.s
+
+tests/open_test.o: tests/open_test.cpp.o
+.PHONY : tests/open_test.o
+
+# target to build an object file
+tests/open_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_test.dir/build.make CMakeFiles/open_test.dir/tests/open_test.cpp.o
+.PHONY : tests/open_test.cpp.o
+
+tests/open_test.i: tests/open_test.cpp.i
+.PHONY : tests/open_test.i
+
+# target to preprocess a source file
+tests/open_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_test.dir/build.make CMakeFiles/open_test.dir/tests/open_test.cpp.i
+.PHONY : tests/open_test.cpp.i
+
+tests/open_test.s: tests/open_test.cpp.s
+.PHONY : tests/open_test.s
+
+# target to generate assembly for a file
+tests/open_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_test.dir/build.make CMakeFiles/open_test.dir/tests/open_test.cpp.s
+.PHONY : tests/open_test.cpp.s
 
 # Help Target
 help:
@@ -256,8 +452,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... capture_test"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... open_d"
+	@echo "... open_lib"
+	@echo "... open_test"
 	@echo "... src/camera.o"
 	@echo "... src/camera.i"
 	@echo "... src/camera.s"
@@ -273,6 +480,12 @@ help:
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"
+	@echo "... tests/capture_test.o"
+	@echo "... tests/capture_test.i"
+	@echo "... tests/capture_test.s"
+	@echo "... tests/open_test.o"
+	@echo "... tests/open_test.i"
+	@echo "... tests/open_test.s"
 .PHONY : help
 
 

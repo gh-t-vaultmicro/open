@@ -1,0 +1,2 @@
+/usr/bin/ar qc libinterpreter_lib.a CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o
+/usr/bin/ranlib libinterpreter_lib.a

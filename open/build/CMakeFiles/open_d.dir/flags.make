@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mint/open/open/include
+CXX_INCLUDES = -I/home/mint/open/open/include -I/home/mint/open/open/build/_deps/googletest-src/googlemock/include -I/home/mint/open/open/build/_deps/googletest-src/googletest/include
 
 CXX_FLAGS = -g -std=gnu++17
 

@@ -1,0 +1,5 @@
+if(EXISTS "/home/mint/open/open/build/open_test[1]_tests.cmake")
+  include("/home/mint/open/open/build/open_test[1]_tests.cmake")
+else()
+  add_test(open_test_NOT_BUILT open_test_NOT_BUILT)
+endif()

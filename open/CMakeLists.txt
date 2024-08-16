@@ -12,11 +12,29 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+)
+FetchContent_MakeAvailable(googletest)
+
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(OPENCV REQUIRED opencv4)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+include_directories(${googletest_SOURCE_DIR}/googlemock/include)
+include_directories(${googletest_SOURCE_DIR}/googletest/include)
+
+
+add_library(
+    open_lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/camera.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/logger.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/mtframe.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/timer.cpp
 )
 
 add_executable(
@@ -41,4 +59,38 @@ target_link_libraries(
 
 )
 
-#include(gtest.cmake)
+
+#test code
+
+#open_test
+
+#set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+add_executable(
+    open_test
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/open_test.cpp
+)
+
+target_link_libraries(
+    open_test
+    gtest_main
+    gmock_main
+    open_lib
+    ${OPENCV_LIBRARIES}
+)
+
+#capture_test
+add_executable(
+    capture_test
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/capture_test.cpp
+)
+
+target_link_libraries(
+    capture_test
+    gtest_main
+    gmock_main
+    open_lib
+    ${OPENCV_LIBRARIES}
+)
+
+include(GoogleTest)
+gtest_discover_tests(open_test)

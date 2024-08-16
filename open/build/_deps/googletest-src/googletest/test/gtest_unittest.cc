@@ -3454,10 +3454,10 @@ TEST_F(NoFatalFailureTest, MessageIsStreamable) {
   TestPartResultArray gtest_failures;
   {
     ScopedFakeTestPartResultReporter gtest_reporter(&gtest_failures);
-    EXPECT_NO_FATAL_FAILURE([] { FAIL() << "foo"; }()) << "my message";
+    EXPECT_NO_FATAL_FAILURE(FAIL() << "foo") << "my message";
   }
   ASSERT_EQ(2, gtest_failures.size());
-  EXPECT_EQ(TestPartResult::kFatalFailure,
+  EXPECT_EQ(TestPartResult::kNonFatalFailure,
             gtest_failures.GetTestPartResult(0).type());
   EXPECT_EQ(TestPartResult::kNonFatalFailure,
             gtest_failures.GetTestPartResult(1).type());
@@ -7703,7 +7703,7 @@ auto* dynamic_test = testing::RegisterTest(
     __LINE__, []() -> DynamicUnitTestFixture* { return new DynamicTest; });
 
 TEST(RegisterTest, WasRegistered) {
-  const auto& unittest = testing::UnitTest::GetInstance();
+  auto* unittest = testing::UnitTest::GetInstance();
   for (int i = 0; i < unittest->total_test_suite_count(); ++i) {
     auto* tests = unittest->GetTestSuite(i);
     if (tests->name() != std::string("DynamicUnitTestFixture")) continue;

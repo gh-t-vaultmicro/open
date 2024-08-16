@@ -181,7 +181,7 @@ GTEST_API_ void Log(LogSeverity severity, const std::string& message,
     }
     std::cout << "Stack trace:\n"
               << ::testing::internal::GetCurrentOsStackTraceExceptTop(
-                     actual_to_skip);
+                     ::testing::UnitTest::GetInstance(), actual_to_skip);
   }
   std::cout << ::std::flush;
 }
@@ -199,10 +199,9 @@ GTEST_API_ void IllegalDoDefault(const char* file, int line) {
 }
 
 constexpr char UnBase64Impl(char c, const char* const base64, char carry) {
-  return *base64 == 0 ? static_cast<char>(65)
-         : *base64 == c
-             ? carry
-             : UnBase64Impl(c, base64 + 1, static_cast<char>(carry + 1));
+  return *base64 == 0   ? static_cast<char>(65)
+         : *base64 == c ? carry
+                        : UnBase64Impl(c, base64 + 1, carry + 1);
 }
 
 template <size_t... I>

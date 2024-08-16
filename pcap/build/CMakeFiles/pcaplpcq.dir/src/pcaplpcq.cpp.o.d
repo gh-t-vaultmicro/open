@@ -1,9 +1,12 @@
 CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o: \
  /home/mint/open/pcap/src/pcaplpcq.cpp /usr/include/stdc-predef.h \
- /home/mint/open/pcap/include/pcap.h /usr/include/pcap/pcap.h \
- /usr/include/pcap/funcattrs.h /usr/include/pcap/compiler-tests.h \
- /usr/include/pcap/pcap-inttypes.h /usr/include/inttypes.h \
- /usr/include/features.h /usr/include/features-time64.h \
+ /home/mint/open/pcap/include/pcap.h \
+ /home/mint/open/pcap/include/pcap/pcap.h \
+ /home/mint/open/pcap/include/pcap/funcattrs.h \
+ /home/mint/open/pcap/include/pcap/compiler-tests.h \
+ /home/mint/open/pcap/include/pcap/pcap-inttypes.h \
+ /usr/include/inttypes.h /usr/include/features.h \
+ /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -41,7 +44,8 @@ CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
- /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/pcap/socket.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
+ /home/mint/open/pcap/include/pcap/socket.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
@@ -63,7 +67,8 @@ CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
  /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/arpa/inet.h \
- /usr/include/pcap/bpf.h /usr/include/pcap/dlt.h /usr/include/stdio.h \
+ /home/mint/open/pcap/include/pcap/bpf.h \
+ /home/mint/open/pcap/include/pcap/dlt.h /usr/include/stdio.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \

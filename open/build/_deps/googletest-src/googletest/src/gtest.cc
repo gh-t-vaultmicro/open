@@ -143,14 +143,6 @@
 #include "absl/strings/str_replace.h"
 #endif  // GTEST_HAS_ABSL
 
-// Checks builtin compiler feature |x| while avoiding an extra layer of #ifdefs
-// at the callsite.
-#if defined(__has_builtin)
-#define GTEST_HAS_BUILTIN(x) __has_builtin(x)
-#else
-#define GTEST_HAS_BUILTIN(x) 0
-#endif  // defined(__has_builtin)
-
 namespace testing {
 
 using internal::CountIf;
@@ -379,8 +371,6 @@ GTEST_DEFINE_string_(
 
 namespace testing {
 namespace internal {
-
-const uint32_t Random::kMaxRange;
 
 // Generates a random number from [0, range), using a Linear
 // Congruential Generator (LCG).  Crashes if 'range' is 0 or greater
@@ -1018,14 +1008,14 @@ void DefaultPerThreadTestPartResultReporter::ReportTestPartResult(
 TestPartResultReporterInterface*
 UnitTestImpl::GetGlobalTestPartResultReporter() {
   internal::MutexLock lock(&global_test_part_result_reporter_mutex_);
-  return global_test_part_result_reporter_;
+  return global_test_part_result_repoter_;
 }
 
 // Sets the global test part result reporter.
 void UnitTestImpl::SetGlobalTestPartResultReporter(
     TestPartResultReporterInterface* reporter) {
   internal::MutexLock lock(&global_test_part_result_reporter_mutex_);
-  global_test_part_result_reporter_ = reporter;
+  global_test_part_result_repoter_ = reporter;
 }
 
 // Returns the test part result reporter for the current thread.
@@ -2721,8 +2711,7 @@ TestInfo::TestInfo(const std::string& a_test_suite_name,
                    internal::TypeId fixture_class_id,
                    internal::TestFactoryBase* factory)
     : test_suite_name_(a_test_suite_name),
-      // begin()/end() is MSVC 17.3.3 ASAN crash workaround (GitHub issue #3997)
-      name_(a_name.begin(), a_name.end()),
+      name_(a_name),
       type_param_(a_type_param ? new std::string(a_type_param) : nullptr),
       value_param_(a_value_param ? new std::string(a_value_param) : nullptr),
       location_(a_code_location),
@@ -3254,15 +3243,18 @@ bool ShouldUseColor(bool stdout_is_tty) {
 #else
     // On non-Windows platforms, we rely on the TERM variable.
     const char* const term = posix::GetEnv("TERM");
-    const bool term_supports_color = term != nullptr && (
+    const bool term_supports_color =
         String::CStringEquals(term, "xterm") ||
         String::CStringEquals(term, "xterm-color") ||
+        String::CStringEquals(term, "xterm-256color") ||
         String::CStringEquals(term, "screen") ||
+        String::CStringEquals(term, "screen-256color") ||
         String::CStringEquals(term, "tmux") ||
+        String::CStringEquals(term, "tmux-256color") ||
         String::CStringEquals(term, "rxvt-unicode") ||
+        String::CStringEquals(term, "rxvt-unicode-256color") ||
         String::CStringEquals(term, "linux") ||
-        String::CStringEquals(term, "cygwin") ||
-        String::EndsWithCaseInsensitive(term, "-256color"));
+        String::CStringEquals(term, "cygwin");
     return stdout_is_tty && term_supports_color;
 #endif  // GTEST_OS_WINDOWS
   }
@@ -4829,9 +4821,6 @@ void JsonUnitTestResultPrinter::PrintJsonUnitTest(std::ostream* stream,
   // If there was a test failure outside of one of the test suites (like in a
   // test environment) include that in the output.
   if (unit_test.ad_hoc_test_result().Failed()) {
-    if (comma) {
-      *stream << ",\n";
-    }
     OutputJsonTestSuiteForTestResult(stream, unit_test.ad_hoc_test_result());
   }
 
@@ -5342,10 +5331,6 @@ void UnitTest::AddTestPartResult(TestPartResult::Type result_type,
      (defined(__x86_64__) || defined(__i386__)))
       // with clang/gcc we can achieve the same effect on x86 by invoking int3
       asm("int3");
-#elif GTEST_HAS_BUILTIN(__builtin_trap)
-      __builtin_trap();
-#elif defined(SIGTRAP)
-      raise(SIGTRAP);
 #else
       // Dereference nullptr through a volatile pointer to prevent the compiler
       // from removing. We use this rather than abort() or __builtin_trap() for
@@ -5531,7 +5516,7 @@ UnitTestImpl::UnitTestImpl(UnitTest* parent)
       GTEST_DISABLE_MSC_WARNINGS_PUSH_(4355 /* using this in initializer */)
           default_global_test_part_result_reporter_(this),
       default_per_thread_test_part_result_reporter_(this),
-      GTEST_DISABLE_MSC_WARNINGS_POP_() global_test_part_result_reporter_(
+      GTEST_DISABLE_MSC_WARNINGS_POP_() global_test_part_result_repoter_(
           &default_global_test_part_result_reporter_),
       per_thread_test_part_result_reporter_(
           &default_per_thread_test_part_result_reporter_),
@@ -6052,7 +6037,7 @@ bool ShouldRunTestOnShard(int total_shards, int shard_index, int test_id) {
 // each TestSuite and TestInfo object.
 // If shard_tests == true, further filters tests based on sharding
 // variables in the environment - see
-// https://github.com/google/googletest/blob/main/docs/advanced.md
+// https://github.com/google/googletest/blob/master/googletest/docs/advanced.md
 // . Returns the number of tests that should run.
 int UnitTestImpl::FilterTests(ReactionToSharding shard_tests) {
   const int32_t total_shards = shard_tests == HONOR_SHARDING_PROTOCOL
@@ -6260,7 +6245,7 @@ void UnitTestImpl::UnshuffleTests() {
 // GetCurrentOsStackTraceExceptTop(..., 1), Foo() will be included in
 // the trace but Bar() and GetCurrentOsStackTraceExceptTop() won't.
 GTEST_NO_INLINE_ GTEST_NO_TAIL_CALL_ std::string
-GetCurrentOsStackTraceExceptTop(int skip_count) {
+GetCurrentOsStackTraceExceptTop(UnitTest* /*unit_test*/, int skip_count) {
   // We pass skip_count + 1 to skip this wrapper function in addition
   // to what the user really wants to skip.
   return GetUnitTestImpl()->CurrentOsStackTraceExceptTop(skip_count + 1);

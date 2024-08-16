@@ -385,8 +385,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // On Android, <regex.h> is only available starting with Gingerbread.
 #define GTEST_HAS_POSIX_RE (__ANDROID_API__ >= 9)
 #else
-#define GTEST_HAS_POSIX_RE \
-  !(GTEST_OS_WINDOWS || GTEST_OS_XTENSA || GTEST_OS_QURT)
+#define GTEST_HAS_POSIX_RE (!GTEST_OS_WINDOWS && !GTEST_OS_XTENSA)
 #endif
 #endif
 
@@ -458,8 +457,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // no support for it at least as recent as Froyo (2.2).
 #define GTEST_HAS_STD_WSTRING                                         \
   (!(GTEST_OS_LINUX_ANDROID || GTEST_OS_CYGWIN || GTEST_OS_SOLARIS || \
-     GTEST_OS_HAIKU || GTEST_OS_ESP32 || GTEST_OS_ESP8266 ||          \
-     GTEST_OS_XTENSA || GTEST_OS_QURT))
+     GTEST_OS_HAIKU || GTEST_OS_ESP32 || GTEST_OS_ESP8266 || GTEST_OS_XTENSA))
 
 #endif  // GTEST_HAS_STD_WSTRING
 
@@ -580,10 +578,9 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // output correctness and to implement death tests.
 #ifndef GTEST_HAS_STREAM_REDIRECTION
 // By default, we assume that stream redirection is supported on all
-// platforms except known mobile / embedded ones.
-#if GTEST_OS_WINDOWS_MOBILE || GTEST_OS_WINDOWS_PHONE ||          \
-    GTEST_OS_WINDOWS_RT || GTEST_OS_ESP8266 || GTEST_OS_XTENSA || \
-    GTEST_OS_QURT
+// platforms except known mobile ones.
+#if GTEST_OS_WINDOWS_MOBILE || GTEST_OS_WINDOWS_PHONE || \
+    GTEST_OS_WINDOWS_RT || GTEST_OS_ESP8266 || GTEST_OS_XTENSA
 #define GTEST_HAS_STREAM_REDIRECTION 0
 #else
 #define GTEST_HAS_STREAM_REDIRECTION 1
@@ -642,32 +639,6 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
   default:  // NOLINT
 #endif
 
-// GTEST_HAVE_ATTRIBUTE_
-//
-// A function-like feature checking macro that is a wrapper around
-// `__has_attribute`, which is defined by GCC 5+ and Clang and evaluates to a
-// nonzero constant integer if the attribute is supported or 0 if not.
-//
-// It evaluates to zero if `__has_attribute` is not defined by the compiler.
-//
-// GCC: https://gcc.gnu.org/gcc-5/changes.html
-// Clang: https://clang.llvm.org/docs/LanguageExtensions.html
-#ifdef __has_attribute
-#define GTEST_HAVE_ATTRIBUTE_(x) __has_attribute(x)
-#else
-#define GTEST_HAVE_ATTRIBUTE_(x) 0
-#endif
-
-// GTEST_HAVE_FEATURE_
-//
-// A function-like feature checking macro that is a wrapper around
-// `__has_feature`.
-#ifdef __has_feature
-#define GTEST_HAVE_FEATURE_(x) __has_feature(x)
-#else
-#define GTEST_HAVE_FEATURE_(x) 0
-#endif
-
 // Use this annotation at the end of a struct/class definition to
 // prevent the compiler from optimizing away instances that are never
 // used.  This is useful when all interesting logic happens inside the
@@ -679,22 +650,30 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 //
 // Also use it after a variable or parameter declaration to tell the
 // compiler the variable/parameter does not have to be used.
-#if GTEST_HAVE_ATTRIBUTE_(unused)
+#if defined(__GNUC__) && !defined(COMPILER_ICC)
 #define GTEST_ATTRIBUTE_UNUSED_ __attribute__((unused))
-#else
+#elif defined(__clang__)
+#if __has_attribute(unused)
+#define GTEST_ATTRIBUTE_UNUSED_ __attribute__((unused))
+#endif
+#endif
+#ifndef GTEST_ATTRIBUTE_UNUSED_
 #define GTEST_ATTRIBUTE_UNUSED_
 #endif
 
 // Use this annotation before a function that takes a printf format string.
-#if GTEST_HAVE_ATTRIBUTE_(format) && defined(__MINGW_PRINTF_FORMAT)
+#if (defined(__GNUC__) || defined(__clang__)) && !defined(COMPILER_ICC)
+#if defined(__MINGW_PRINTF_FORMAT)
 // MinGW has two different printf implementations. Ensure the format macro
 // matches the selected implementation. See
 // https://sourceforge.net/p/mingw-w64/wiki2/gnu%20printf/.
 #define GTEST_ATTRIBUTE_PRINTF_(string_index, first_to_check) \
-  __attribute__((format(__MINGW_PRINTF_FORMAT, string_index, first_to_check)))
-#elif GTEST_HAVE_ATTRIBUTE_(format)
-#define GTEST_ATTRIBUTE_PRINTF_(string_index, first_to_check)   \
-  __attribute__((format(printf, string_index, first_to_check)))
+  __attribute__((                                             \
+      __format__(__MINGW_PRINTF_FORMAT, string_index, first_to_check)))
+#else
+#define GTEST_ATTRIBUTE_PRINTF_(string_index, first_to_check) \
+  __attribute__((__format__(__printf__, string_index, first_to_check)))
+#endif
 #else
 #define GTEST_ATTRIBUTE_PRINTF_(string_index, first_to_check)
 #endif
@@ -704,11 +683,11 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // following the argument list:
 //
 //   Sprocket* AllocateSprocket() GTEST_MUST_USE_RESULT_;
-#if GTEST_HAVE_ATTRIBUTE_(warn_unused_result)
+#if defined(__GNUC__) && !defined(COMPILER_ICC)
 #define GTEST_MUST_USE_RESULT_ __attribute__((warn_unused_result))
 #else
 #define GTEST_MUST_USE_RESULT_
-#endif
+#endif  // __GNUC__ && !COMPILER_ICC
 
 // MS C++ compiler emits warning when a conditional expression is compile time
 // constant. In some contexts this warning is false positive and needs to be
@@ -764,7 +743,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #elif GTEST_CREATE_SHARED_LIBRARY
 #define GTEST_API_ __declspec(dllexport)
 #endif
-#elif GTEST_HAVE_ATTRIBUTE_(visibility)
+#elif __GNUC__ >= 4 || defined(__clang__)
 #define GTEST_API_ __attribute__((visibility("default")))
 #endif  // _MSC_VER
 
@@ -778,17 +757,20 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 #define GTEST_DEFAULT_DEATH_TEST_STYLE "fast"
 #endif  // GTEST_DEFAULT_DEATH_TEST_STYLE
 
-#if GTEST_HAVE_ATTRIBUTE_(noinline)
+#ifdef __GNUC__
 // Ask the compiler to never inline a given function.
 #define GTEST_NO_INLINE_ __attribute__((noinline))
 #else
 #define GTEST_NO_INLINE_
 #endif
 
-#if GTEST_HAVE_ATTRIBUTE_(disable_tail_calls)
+#if defined(__clang__)
+// Nested ifs to avoid triggering MSVC warning.
+#if __has_attribute(disable_tail_calls)
 // Ask the compiler not to perform tail call optimization inside
 // the marked function.
 #define GTEST_NO_TAIL_CALL_ __attribute__((disable_tail_calls))
+#endif
 #elif __GNUC__
 #define GTEST_NO_TAIL_CALL_ \
   __attribute__((optimize("no-optimize-sibling-calls")))
@@ -807,35 +789,50 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 
 // A function level attribute to disable checking for use of uninitialized
 // memory when built with MemorySanitizer.
-#if GTEST_HAVE_ATTRIBUTE_(no_sanitize_memory)
+#if defined(__clang__)
+#if __has_feature(memory_sanitizer)
 #define GTEST_ATTRIBUTE_NO_SANITIZE_MEMORY_ __attribute__((no_sanitize_memory))
 #else
 #define GTEST_ATTRIBUTE_NO_SANITIZE_MEMORY_
-#endif
+#endif  // __has_feature(memory_sanitizer)
+#else
+#define GTEST_ATTRIBUTE_NO_SANITIZE_MEMORY_
+#endif  // __clang__
 
 // A function level attribute to disable AddressSanitizer instrumentation.
-#if GTEST_HAVE_ATTRIBUTE_(no_sanitize_address)
+#if defined(__clang__)
+#if __has_feature(address_sanitizer)
 #define GTEST_ATTRIBUTE_NO_SANITIZE_ADDRESS_ \
   __attribute__((no_sanitize_address))
 #else
 #define GTEST_ATTRIBUTE_NO_SANITIZE_ADDRESS_
-#endif
+#endif  // __has_feature(address_sanitizer)
+#else
+#define GTEST_ATTRIBUTE_NO_SANITIZE_ADDRESS_
+#endif  // __clang__
 
 // A function level attribute to disable HWAddressSanitizer instrumentation.
-#if GTEST_HAVE_FEATURE_(hwaddress_sanitizer) && \
-    GTEST_HAVE_ATTRIBUTE_(no_sanitize)
+#if defined(__clang__)
+#if __has_feature(hwaddress_sanitizer)
 #define GTEST_ATTRIBUTE_NO_SANITIZE_HWADDRESS_ \
   __attribute__((no_sanitize("hwaddress")))
 #else
 #define GTEST_ATTRIBUTE_NO_SANITIZE_HWADDRESS_
-#endif
+#endif  // __has_feature(hwaddress_sanitizer)
+#else
+#define GTEST_ATTRIBUTE_NO_SANITIZE_HWADDRESS_
+#endif  // __clang__
 
 // A function level attribute to disable ThreadSanitizer instrumentation.
-#if GTEST_HAVE_ATTRIBUTE_(no_sanitize_thread)
-#define GTEST_ATTRIBUTE_NO_SANITIZE_THREAD_ __attribute((no_sanitize_thread))
+#if defined(__clang__)
+#if __has_feature(thread_sanitizer)
+#define GTEST_ATTRIBUTE_NO_SANITIZE_THREAD_ __attribute__((no_sanitize_thread))
 #else
 #define GTEST_ATTRIBUTE_NO_SANITIZE_THREAD_
-#endif
+#endif  // __has_feature(thread_sanitizer)
+#else
+#define GTEST_ATTRIBUTE_NO_SANITIZE_THREAD_
+#endif  // __clang__
 
 namespace testing {
 
@@ -1713,7 +1710,7 @@ typedef GTestMutexLock MutexLock;
 // C-linkage.  Therefore it cannot be templatized to access
 // ThreadLocal<T>.  Hence the need for class
 // ThreadLocalValueHolderBase.
-class GTEST_API_ ThreadLocalValueHolderBase {
+class ThreadLocalValueHolderBase {
  public:
   virtual ~ThreadLocalValueHolderBase() {}
 };
@@ -2022,12 +2019,7 @@ inline int StrCaseCmp(const char* s1, const char* s2) {
   return strcasecmp(s1, s2);
 }
 inline char* StrDup(const char* src) { return strdup(src); }
-#if GTEST_OS_QURT
-// QuRT doesn't support any directory functions, including rmdir
-inline int RmDir(const char*) { return 0; }
-#else
 inline int RmDir(const char* dir) { return rmdir(dir); }
-#endif
 inline bool IsDir(const StatStruct& st) { return S_ISDIR(st.st_mode); }
 
 #endif  // GTEST_OS_WINDOWS
@@ -2051,9 +2043,8 @@ GTEST_DISABLE_MSC_DEPRECATED_PUSH_()
 // StrError() aren't needed on Windows CE at this time and thus not
 // defined there.
 
-#if !GTEST_OS_WINDOWS_MOBILE && !GTEST_OS_WINDOWS_PHONE &&           \
-    !GTEST_OS_WINDOWS_RT && !GTEST_OS_ESP8266 && !GTEST_OS_XTENSA && \
-    !GTEST_OS_QURT
+#if !GTEST_OS_WINDOWS_MOBILE && !GTEST_OS_WINDOWS_PHONE && \
+    !GTEST_OS_WINDOWS_RT && !GTEST_OS_ESP8266 && !GTEST_OS_XTENSA
 inline int ChDir(const char* dir) { return chdir(dir); }
 #endif
 inline FILE* FOpen(const char* path, const char* mode) {
@@ -2067,14 +2058,14 @@ inline FILE* FOpen(const char* path, const char* mode) {
   return fopen(path, mode);
 #endif  // GTEST_OS_WINDOWS && !GTEST_OS_WINDOWS_MINGW
 }
-#if !GTEST_OS_WINDOWS_MOBILE && !GTEST_OS_QURT
+#if !GTEST_OS_WINDOWS_MOBILE
 inline FILE* FReopen(const char* path, const char* mode, FILE* stream) {
   return freopen(path, mode, stream);
 }
 inline FILE* FDOpen(int fd, const char* mode) { return fdopen(fd, mode); }
 #endif
 inline int FClose(FILE* fp) { return fclose(fp); }
-#if !GTEST_OS_WINDOWS_MOBILE && !GTEST_OS_QURT
+#if !GTEST_OS_WINDOWS_MOBILE
 inline int Read(int fd, void* buf, unsigned int count) {
   return static_cast<int>(read(fd, buf, count));
 }
@@ -2085,9 +2076,8 @@ inline int Close(int fd) { return close(fd); }
 inline const char* StrError(int errnum) { return strerror(errnum); }
 #endif
 inline const char* GetEnv(const char* name) {
-#if GTEST_OS_WINDOWS_MOBILE || GTEST_OS_WINDOWS_PHONE ||          \
-    GTEST_OS_WINDOWS_RT || GTEST_OS_ESP8266 || GTEST_OS_XTENSA || \
-    GTEST_OS_QURT
+#if GTEST_OS_WINDOWS_MOBILE || GTEST_OS_WINDOWS_PHONE || \
+    GTEST_OS_WINDOWS_RT || GTEST_OS_ESP8266 || GTEST_OS_XTENSA
   // We are on an embedded platform, which has no environment variables.
   static_cast<void>(name);  // To prevent 'unused argument' warning.
   return nullptr;

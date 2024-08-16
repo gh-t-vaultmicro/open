@@ -18,6 +18,12 @@ namespace fs = std::filesystem;
 pcap_t *handle = nullptr; 
 ofstream log_file;        
 
+// Global counters for packets and lengths
+unsigned int packet_count = 0;
+unsigned long long total_packet_length = 0;
+unsigned long long total_captured_length = 0;
+
+
 void clean_exit(int signum) {
     struct pcap_stat stats;
 
@@ -30,6 +36,10 @@ void clean_exit(int signum) {
             cout << "Packets received: " << stats.ps_recv << endl;
             cout << "Packets dropped by system buffer: " << stats.ps_drop << endl;
             cout << "Packets dropped by interface: " << stats.ps_ifdrop << endl;
+            cout << "Packets counted: " << packet_count << endl;
+            cout << "Total Packet Length bytes: " << total_packet_length << endl;
+            cout << "Total Captured Packet Length bytes: " << total_captured_length << endl;
+
 
             if (log_file.is_open()) {
                 log_file << endl;
@@ -38,6 +48,9 @@ void clean_exit(int signum) {
                 log_file << "Packets received: " << stats.ps_recv << endl;                  //received packets
                 log_file << "Packets dropped by system buffer: " << stats.ps_drop << endl;  //dropped packets due to system buffer- buffer overflow
                 log_file << "Packets dropped by interface: " << stats.ps_ifdrop << endl;    //dropped packets in the interface
+                log_file << "Packets counted: " << packet_count << endl;
+                log_file << "Total Packet Length bytes: " << total_packet_length << endl;
+                log_file << "Total Captured Packet Length bytes: " << total_captured_length << endl;
             }
         } else {
             cerr << "pcap_stats failed: " << pcap_geterr(handle) << endl;
@@ -63,6 +76,10 @@ string getCurrentTimeFormatted() {
 
 void packet_handler(u_char *user_data, const struct pcap_pkthdr *pkthdr, const u_char *packet) {
     ofstream *log_file = reinterpret_cast<ofstream*>(user_data);
+
+    packet_count++;
+    total_packet_length += pkthdr->len;
+    total_captured_length += pkthdr->caplen;
 
     time_t raw_time = pkthdr->ts.tv_sec;
     struct tm* timeinfo = localtime(&raw_time);

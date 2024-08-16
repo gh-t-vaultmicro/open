@@ -1,0 +1,2 @@
+/usr/bin/ar qc libopen_lib.a CMakeFiles/open_lib.dir/src/camera.cpp.o CMakeFiles/open_lib.dir/src/logger.cpp.o CMakeFiles/open_lib.dir/src/mtframe.cpp.o CMakeFiles/open_lib.dir/src/timer.cpp.o
+/usr/bin/ranlib libopen_lib.a

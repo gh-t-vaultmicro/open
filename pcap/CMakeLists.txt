@@ -36,6 +36,23 @@ target_link_libraries(
         # ${LIBPCAP_DIR}/libpcap.so.1.10.4
 )
 
+add_library(
+    interpreter_lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/interpreter.cpp
+)
+
+add_executable(
+    interpreter
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/main_p.cpp
+)
+
+target_link_libraries(
+    interpreter
+    PRIVATE
+        interpreter_lib
+)
+
+
  
 #include(gtest.cmake)
 
