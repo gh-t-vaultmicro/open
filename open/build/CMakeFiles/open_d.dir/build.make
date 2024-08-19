@@ -161,7 +161,6 @@ open_d: /home/mint/open/open/lib/libopencv_imgproc.so
 open_d: /home/mint/open/open/lib/libopencv_highgui.so
 open_d: /home/mint/open/open/lib/libopencv_imgcodecs.so
 open_d: /home/mint/open/open/lib/libopencv_videoio.so
-open_d: /home/mint/open/open/lib/libopencv_video.so
 open_d: CMakeFiles/open_d.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable open_d"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/open_d.dir/link.txt --verbose=$(VERBOSE)

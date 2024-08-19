@@ -100,7 +100,6 @@ open_test: /home/mint/open/open/lib/libopencv_imgproc.so
 open_test: /home/mint/open/open/lib/libopencv_highgui.so
 open_test: /home/mint/open/open/lib/libopencv_imgcodecs.so
 open_test: /home/mint/open/open/lib/libopencv_videoio.so
-open_test: /home/mint/open/open/lib/libopencv_video.so
 open_test: lib/libgmock.a
 open_test: lib/libgtest.a
 open_test: CMakeFiles/open_test.dir/link.txt

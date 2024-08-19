@@ -19,37 +19,12 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-# Option to include system-installed OpenCV or local libraries
-option(USE_SYSTEM_OPENCV "Use system installed OpenCV" OFF)
+# find_package(PkgConfig REQUIRED)
+# pkg_check_modules(OPENCV REQUIRED opencv4)
 
-if (USE_SYSTEM_OPENCV)
-    find_package(PkgConfig REQUIRED)
-    pkg_check_modules(OPENCV REQUIRED opencv4)
-else()
-    set(OPENCV_LIBS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-    set(OPENCV_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-    # Add local OpenCV libraries to the linker path
-    link_directories(${OPENCV_LIBS_DIR})
-
-    # Manually specify the OpenCV libraries to link against
-    set(OPENCV_LIBRARIES
-        ${OPENCV_LIBS_DIR}/libopencv_core.so
-        ${OPENCV_LIBS_DIR}/libopencv_imgproc.so
-        ${OPENCV_LIBS_DIR}/libopencv_highgui.so
-        ${OPENCV_LIBS_DIR}/libopencv_imgcodecs.so
-        ${OPENCV_LIBS_DIR}/libopencv_videoio.so
-        ${OPENCV_LIBS_DIR}/libopencv_video.so
-    )
-endif()
-
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${OPENCV_INCLUDE_DIRS}
-)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${googletest_SOURCE_DIR}/googlemock/include)
 include_directories(${googletest_SOURCE_DIR}/googletest/include)
-
 
 add_library(
     open_lib
@@ -77,7 +52,7 @@ target_link_libraries(
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_video.so 
+        #${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_video.so 
 
 )
 
@@ -94,11 +69,17 @@ add_executable(
 
 target_link_libraries(
     open_test
-    gtest_main
-    gmock_main
-    open_lib
-    ${OPENCV_LIBRARIES}
+    PRIVATE
+        gtest_main
+        gmock_main
+        open_lib
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_core.so
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgproc.so
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
 )
+
 
 # #capture_test
 # add_executable(
