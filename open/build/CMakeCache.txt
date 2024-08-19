@@ -305,18 +305,6 @@ FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
 
-//Use system installed OpenCV
-USE_SYSTEM_OPENCV:BOOL=OFF
-
-//Value Computed by CMake
-YourProjectName_BINARY_DIR:STATIC=/home/mint/open/open/build
-
-//Value Computed by CMake
-YourProjectName_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-YourProjectName_SOURCE_DIR:STATIC=/home/mint/open/open
-
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/mint/open/open/build/_deps/googletest-build/googlemock
 

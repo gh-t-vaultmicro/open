@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/YourExecutableName.dir/tests/test.cpp.o -o YourExecutableName   -L/home/mint/open/open/lib  -Wl,-rpath,/home/mint/open/open/lib -lopencv_core -lopencv_highgui -lopencv_imgproc 
