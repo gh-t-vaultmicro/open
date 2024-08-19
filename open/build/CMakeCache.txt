@@ -305,6 +305,21 @@ FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
 
+//Path to a library.
+OPENCV_CORE:FILEPATH=/home/mint/open/open/lib/libopencv_core.so
+
+//Path to a library.
+OPENCV_HIGHGUI:FILEPATH=/home/mint/open/open/lib/libopencv_highgui.so
+
+//Path to a library.
+OPENCV_IMGCODECS:FILEPATH=/home/mint/open/open/lib/libopencv_imgcodecs.so
+
+//Path to a library.
+OPENCV_IMGPROC:FILEPATH=/home/mint/open/open/lib/libopencv_imgproc.so
+
+//Path to a library.
+OPENCV_VIDEOIO:FILEPATH=/home/mint/open/open/lib/libopencv_videoio.so
+
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/mint/open/open/build/_deps/googletest-build/googlemock
 
