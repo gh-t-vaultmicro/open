@@ -1,0 +1,1 @@
+Usage: ./open [-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-v verbose]

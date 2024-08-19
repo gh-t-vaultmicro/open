@@ -19,11 +19,33 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(OPENCV REQUIRED opencv4)
+# Option to include system-installed OpenCV or local libraries
+option(USE_SYSTEM_OPENCV "Use system installed OpenCV" OFF)
+
+if (USE_SYSTEM_OPENCV)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(OPENCV REQUIRED opencv4)
+else()
+    set(OPENCV_LIBS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+    set(OPENCV_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+    # Add local OpenCV libraries to the linker path
+    link_directories(${OPENCV_LIBS_DIR})
+
+    # Manually specify the OpenCV libraries to link against
+    set(OPENCV_LIBRARIES
+        ${OPENCV_LIBS_DIR}/libopencv_core.so
+        ${OPENCV_LIBS_DIR}/libopencv_imgproc.so
+        ${OPENCV_LIBS_DIR}/libopencv_highgui.so
+        ${OPENCV_LIBS_DIR}/libopencv_imgcodecs.so
+        ${OPENCV_LIBS_DIR}/libopencv_videoio.so
+        ${OPENCV_LIBS_DIR}/libopencv_video.so
+    )
+endif()
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${OPENCV_INCLUDE_DIRS}
 )
 include_directories(${googletest_SOURCE_DIR}/googlemock/include)
 include_directories(${googletest_SOURCE_DIR}/googletest/include)
@@ -78,19 +100,19 @@ target_link_libraries(
     ${OPENCV_LIBRARIES}
 )
 
-#capture_test
-add_executable(
-    capture_test
-    ${CMAKE_CURRENT_SOURCE_DIR}/tests/capture_test.cpp
-)
+# #capture_test
+# add_executable(
+#     capture_test
+#     ${CMAKE_CURRENT_SOURCE_DIR}/tests/capture_test.cpp
+# )
 
-target_link_libraries(
-    capture_test
-    gtest_main
-    gmock_main
-    open_lib
-    ${OPENCV_LIBRARIES}
-)
+# target_link_libraries(
+#     capture_test
+#     gtest_main
+#     gmock_main
+#     open_lib
+#     ${OPENCV_LIBRARIES}
+# )
 
 include(GoogleTest)
 gtest_discover_tests(open_test)

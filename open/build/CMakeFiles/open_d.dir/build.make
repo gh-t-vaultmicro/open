@@ -73,71 +73,71 @@ CMakeFiles/open_d.dir/src/open.cpp.o: CMakeFiles/open_d.dir/flags.make
 CMakeFiles/open_d.dir/src/open.cpp.o: /home/mint/open/open/src/open.cpp
 CMakeFiles/open_d.dir/src/open.cpp.o: CMakeFiles/open_d.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/open_d.dir/src/open.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/open.cpp.o -MF CMakeFiles/open_d.dir/src/open.cpp.o.d -o CMakeFiles/open_d.dir/src/open.cpp.o -c /home/mint/open/open/src/open.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/open.cpp.o -MF CMakeFiles/open_d.dir/src/open.cpp.o.d -o CMakeFiles/open_d.dir/src/open.cpp.o -c /home/mint/open/open/src/open.cpp
 
 CMakeFiles/open_d.dir/src/open.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/open_d.dir/src/open.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/open.cpp > CMakeFiles/open_d.dir/src/open.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/open.cpp > CMakeFiles/open_d.dir/src/open.cpp.i
 
 CMakeFiles/open_d.dir/src/open.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/open_d.dir/src/open.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/open.cpp -o CMakeFiles/open_d.dir/src/open.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/open.cpp -o CMakeFiles/open_d.dir/src/open.cpp.s
 
 CMakeFiles/open_d.dir/src/camera.cpp.o: CMakeFiles/open_d.dir/flags.make
 CMakeFiles/open_d.dir/src/camera.cpp.o: /home/mint/open/open/src/camera.cpp
 CMakeFiles/open_d.dir/src/camera.cpp.o: CMakeFiles/open_d.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/open_d.dir/src/camera.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/camera.cpp.o -MF CMakeFiles/open_d.dir/src/camera.cpp.o.d -o CMakeFiles/open_d.dir/src/camera.cpp.o -c /home/mint/open/open/src/camera.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/camera.cpp.o -MF CMakeFiles/open_d.dir/src/camera.cpp.o.d -o CMakeFiles/open_d.dir/src/camera.cpp.o -c /home/mint/open/open/src/camera.cpp
 
 CMakeFiles/open_d.dir/src/camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/open_d.dir/src/camera.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/camera.cpp > CMakeFiles/open_d.dir/src/camera.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/camera.cpp > CMakeFiles/open_d.dir/src/camera.cpp.i
 
 CMakeFiles/open_d.dir/src/camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/open_d.dir/src/camera.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/camera.cpp -o CMakeFiles/open_d.dir/src/camera.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/camera.cpp -o CMakeFiles/open_d.dir/src/camera.cpp.s
 
 CMakeFiles/open_d.dir/src/logger.cpp.o: CMakeFiles/open_d.dir/flags.make
 CMakeFiles/open_d.dir/src/logger.cpp.o: /home/mint/open/open/src/logger.cpp
 CMakeFiles/open_d.dir/src/logger.cpp.o: CMakeFiles/open_d.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/open_d.dir/src/logger.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/logger.cpp.o -MF CMakeFiles/open_d.dir/src/logger.cpp.o.d -o CMakeFiles/open_d.dir/src/logger.cpp.o -c /home/mint/open/open/src/logger.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/logger.cpp.o -MF CMakeFiles/open_d.dir/src/logger.cpp.o.d -o CMakeFiles/open_d.dir/src/logger.cpp.o -c /home/mint/open/open/src/logger.cpp
 
 CMakeFiles/open_d.dir/src/logger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/open_d.dir/src/logger.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/logger.cpp > CMakeFiles/open_d.dir/src/logger.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/logger.cpp > CMakeFiles/open_d.dir/src/logger.cpp.i
 
 CMakeFiles/open_d.dir/src/logger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/open_d.dir/src/logger.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/logger.cpp -o CMakeFiles/open_d.dir/src/logger.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/logger.cpp -o CMakeFiles/open_d.dir/src/logger.cpp.s
 
 CMakeFiles/open_d.dir/src/mtframe.cpp.o: CMakeFiles/open_d.dir/flags.make
 CMakeFiles/open_d.dir/src/mtframe.cpp.o: /home/mint/open/open/src/mtframe.cpp
 CMakeFiles/open_d.dir/src/mtframe.cpp.o: CMakeFiles/open_d.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/open_d.dir/src/mtframe.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/mtframe.cpp.o -MF CMakeFiles/open_d.dir/src/mtframe.cpp.o.d -o CMakeFiles/open_d.dir/src/mtframe.cpp.o -c /home/mint/open/open/src/mtframe.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/mtframe.cpp.o -MF CMakeFiles/open_d.dir/src/mtframe.cpp.o.d -o CMakeFiles/open_d.dir/src/mtframe.cpp.o -c /home/mint/open/open/src/mtframe.cpp
 
 CMakeFiles/open_d.dir/src/mtframe.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/open_d.dir/src/mtframe.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/mtframe.cpp > CMakeFiles/open_d.dir/src/mtframe.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/mtframe.cpp > CMakeFiles/open_d.dir/src/mtframe.cpp.i
 
 CMakeFiles/open_d.dir/src/mtframe.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/open_d.dir/src/mtframe.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/mtframe.cpp -o CMakeFiles/open_d.dir/src/mtframe.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/mtframe.cpp -o CMakeFiles/open_d.dir/src/mtframe.cpp.s
 
 CMakeFiles/open_d.dir/src/timer.cpp.o: CMakeFiles/open_d.dir/flags.make
 CMakeFiles/open_d.dir/src/timer.cpp.o: /home/mint/open/open/src/timer.cpp
 CMakeFiles/open_d.dir/src/timer.cpp.o: CMakeFiles/open_d.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/open_d.dir/src/timer.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/timer.cpp.o -MF CMakeFiles/open_d.dir/src/timer.cpp.o.d -o CMakeFiles/open_d.dir/src/timer.cpp.o -c /home/mint/open/open/src/timer.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_d.dir/src/timer.cpp.o -MF CMakeFiles/open_d.dir/src/timer.cpp.o.d -o CMakeFiles/open_d.dir/src/timer.cpp.o -c /home/mint/open/open/src/timer.cpp
 
 CMakeFiles/open_d.dir/src/timer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/open_d.dir/src/timer.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/timer.cpp > CMakeFiles/open_d.dir/src/timer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/src/timer.cpp > CMakeFiles/open_d.dir/src/timer.cpp.i
 
 CMakeFiles/open_d.dir/src/timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/open_d.dir/src/timer.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/timer.cpp -o CMakeFiles/open_d.dir/src/timer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/src/timer.cpp -o CMakeFiles/open_d.dir/src/timer.cpp.s
 
 # Object files for target open_d
 open_d_OBJECTS = \

@@ -73,15 +73,15 @@ CMakeFiles/open_test.dir/tests/open_test.cpp.o: CMakeFiles/open_test.dir/flags.m
 CMakeFiles/open_test.dir/tests/open_test.cpp.o: /home/mint/open/open/tests/open_test.cpp
 CMakeFiles/open_test.dir/tests/open_test.cpp.o: CMakeFiles/open_test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/open/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/open_test.dir/tests/open_test.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_test.dir/tests/open_test.cpp.o -MF CMakeFiles/open_test.dir/tests/open_test.cpp.o.d -o CMakeFiles/open_test.dir/tests/open_test.cpp.o -c /home/mint/open/open/tests/open_test.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/open_test.dir/tests/open_test.cpp.o -MF CMakeFiles/open_test.dir/tests/open_test.cpp.o.d -o CMakeFiles/open_test.dir/tests/open_test.cpp.o -c /home/mint/open/open/tests/open_test.cpp
 
 CMakeFiles/open_test.dir/tests/open_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/open_test.dir/tests/open_test.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/tests/open_test.cpp > CMakeFiles/open_test.dir/tests/open_test.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/open/tests/open_test.cpp > CMakeFiles/open_test.dir/tests/open_test.cpp.i
 
 CMakeFiles/open_test.dir/tests/open_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/open_test.dir/tests/open_test.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/tests/open_test.cpp -o CMakeFiles/open_test.dir/tests/open_test.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/open/tests/open_test.cpp -o CMakeFiles/open_test.dir/tests/open_test.cpp.s
 
 # Object files for target open_test
 open_test_OBJECTS = \
@@ -95,6 +95,12 @@ open_test: CMakeFiles/open_test.dir/build.make
 open_test: lib/libgtest_main.a
 open_test: lib/libgmock_main.a
 open_test: libopen_lib.a
+open_test: /home/mint/open/open/lib/libopencv_core.so
+open_test: /home/mint/open/open/lib/libopencv_imgproc.so
+open_test: /home/mint/open/open/lib/libopencv_highgui.so
+open_test: /home/mint/open/open/lib/libopencv_imgcodecs.so
+open_test: /home/mint/open/open/lib/libopencv_videoio.so
+open_test: /home/mint/open/open/lib/libopencv_video.so
 open_test: lib/libgmock.a
 open_test: lib/libgtest.a
 open_test: CMakeFiles/open_test.dir/link.txt

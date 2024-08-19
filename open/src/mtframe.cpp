@@ -12,7 +12,6 @@ void capture_frames(VideoCapture& cap, int fps) {
             break;
         }
 
-
         {
             lock_guard<mutex> lock(frame_mutex);
             frame_queue.push(frame);
