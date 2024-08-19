@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -g -std=gnu++17 -o CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o -c /home/mint/open/pcap/src/pcaplpcq.cpp",
+  "file": "/home/mint/open/pcap/src/pcaplpcq.cpp",
+  "output": "CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o"
+},
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -g -std=gnu++17 -o CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o -c /home/mint/open/pcap/src/interpreter.cpp",
+  "file": "/home/mint/open/pcap/src/interpreter.cpp",
+  "output": "CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o"
+},
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -g -std=gnu++17 -o CMakeFiles/interpreter.dir/src/main_p.cpp.o -c /home/mint/open/pcap/src/main_p.cpp",
+  "file": "/home/mint/open/pcap/src/main_p.cpp",
+  "output": "CMakeFiles/interpreter.dir/src/main_p.cpp.o"
+}
+]

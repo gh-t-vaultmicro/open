@@ -1,3 +1,5 @@
-/home/mint/open/build/CMakeFiles/synch.dir
+/home/mint/open/build/CMakeFiles/pcaplpcq.dir
+/home/mint/open/build/CMakeFiles/interpreter_lib.dir
+/home/mint/open/build/CMakeFiles/interpreter.dir
 /home/mint/open/build/CMakeFiles/edit_cache.dir
 /home/mint/open/build/CMakeFiles/rebuild_cache.dir
