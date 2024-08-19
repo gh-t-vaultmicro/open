@@ -198,7 +198,7 @@ log_file_path = input("Type path to your file: ")
 if not log_file_path:
     print("No path provided. Using default path.")
     print("Showing example")
-    default_log_file_path = "../log/log_pcap_2024-08-12-15-47-15.txt"
+    default_log_file_path = "../log/log_pcap_example.txt"
     log_file_path = default_log_file_path
 
 parse_file(log_file_path)

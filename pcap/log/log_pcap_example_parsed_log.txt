@@ -1,0 +1,380 @@
+Packet:      2024-08-12 18:11:15.49509
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 01
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 12000000
+Data Length: 00000000
+Setup Header: 8006000100001200
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49516
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 01
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 12000000
+Data Length: 12000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49521
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 01
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 09000000
+Data Length: 00000000
+Setup Header: 8006000200000900
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49523
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 01
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 09000000
+Data Length: 09000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49526
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 01
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 19000000
+Data Length: 00000000
+Setup Header: 8006000200001900
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49527
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 01
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 19000000
+Data Length: 19000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49535
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 02
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 12000000
+Data Length: 00000000
+Setup Header: 8006000100001200
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49861
+Chrono Time: 2024-08-12 18:11:15.053
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 02
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 12000000
+Data Length: 12000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.49870
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 02
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 09000000
+Data Length: 00000000
+Setup Header: 8006000200000900
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.50188
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 02
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 09000000
+Data Length: 09000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.50197
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 02
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 22000000
+Data Length: 00000000
+Setup Header: 8006000200002200
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.50495
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 02
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 22000000
+Data Length: 22000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.50513
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 12000000
+Data Length: 00000000
+Setup Header: 8006000100001200
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.51194
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 12000000
+Data Length: 12000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.51204
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 09000000
+Data Length: 00000000
+Setup Header: 8006000200000900
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.51848
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 09000000
+Data Length: 09000000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.51858
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 53 (SUBMIT)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 00
+Data Present: 3c
+URB Status: 8dffffff (Operation Now in Progress)
+URB Length: 5e050000
+Data Length: 00000000
+Setup Header: 8006000200005e05
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.53025
+Chrono Time: 2024-08-12 18:11:15.054
+URB ID: c010c2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 02 (CONTROL)
+Endpoint: 80 (IN Endpoint 0)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 5e050000
+Data Length: 5e050000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 00020000
+ISO Descriptor Number: 00000000
+
+Packet:      2024-08-12 18:11:15.72705
+Chrono Time: 2024-08-12 18:11:15.072
+URB ID: 801ac2807c9dffff
+URB Type: 43 (COMPLETE)
+URB Transfer Type: 03 (BULK)
+Endpoint: 81 (IN Endpoint 1)
+Device Number: 03
+URB Bus ID: 0100
+Device Setup Request: 2d
+Data Present: 00
+URB Status: 00000000 (SUCCESS)
+URB Length: 00400000
+Data Length: 00400000
+Setup Header: 0000000000000000
+Interval: 00000000
+Start of Frame: 00000000
+Copy of Transfer Flag: 04020000
+ISO Descriptor Number: 00000000
+
+--------------------------------------------------------------------------------
+Total URBs to consider (excluding 'Operation Now in Progress'): 0
+SUCCESS Count: 0
+No Such File or Directory Count: 0
+Operation Now in Progress excluded from the percentage calculation 
+SUCCESS: -nan%
+No Such File or Directory: -nan%
+
+No Such File or Directory Logged Time:
+
+Failed ISO Packets:
+
+Capture Statistics:
+Packets counted: 6033
+Packets dropped by interface: 0
+Packets dropped by system buffer: 1589
+Packets received: 6033
+Total Captured Packet Length: 31963602
+Total Packet Length: 31963602
