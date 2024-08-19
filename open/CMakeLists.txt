@@ -21,6 +21,13 @@ FetchContent_MakeAvailable(googletest)
 
 # find_package(PkgConfig REQUIRED)
 # pkg_check_modules(OPENCV REQUIRED opencv4)
+set(OPENCV_LIBRARIES
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_core.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgproc.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
+)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${googletest_SOURCE_DIR}/googlemock/include)
@@ -46,13 +53,7 @@ add_executable(
 target_link_libraries(
     open_d
     PRIVATE
-        #${OPENCV_LIBRARIES}
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_core.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgproc.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
-
+        ${OPENCV_LIBRARIES}
 )
 
 
@@ -72,27 +73,25 @@ target_link_libraries(
         gtest_main
         gmock_main
         open_lib
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_core.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgproc.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
-        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
+        ${OPENCV_LIBRARIES}
+      
 )
 
 
-# #capture_test
-# add_executable(
-#     capture_test
-#     ${CMAKE_CURRENT_SOURCE_DIR}/tests/capture_test.cpp
-# )
+#capture_test
+add_executable(
+    capture_test
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/capture_test.cpp
+)
 
-# target_link_libraries(
-#     capture_test
-#     gtest_main
-#     gmock_main
-#     open_lib
-#     ${OPENCV_LIBRARIES}
-# )
+target_link_libraries(
+    capture_test
+    PRIVATE
+        gtest_main
+        gmock_main
+        open_lib
+        ${OPENCV_LIBRARIES}
+)
 
 include(GoogleTest)
 gtest_discover_tests(open_test)
