@@ -52,7 +52,13 @@ target_link_libraries(
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
-        #${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_video.so 
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libtbb.so.12
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libQt5Test.so.5
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libQt5OpenGL.so.5
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgdcmMSFF.so.3.0
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgdal.so.34
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgdcmDSED.so.3.0
+
 
 )
 
@@ -78,6 +84,13 @@ target_link_libraries(
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_highgui.so
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_imgcodecs.so
         ${CMAKE_CURRENT_SOURCE_DIR}/lib/libopencv_videoio.so
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libtbb.so.12
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libQt5Test.so.5
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libQt5OpenGL.so.5
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgdcmMSFF.so.3.0
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgdal.so.34
+        ${CMAKE_CURRENT_SOURCE_DIR}/lib/libgdcmDSED.so.3.0
+
 )
 
 
