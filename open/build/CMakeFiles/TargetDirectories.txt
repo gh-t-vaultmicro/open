@@ -1,7 +1,7 @@
 /home/mint/open/open/build/CMakeFiles/open_lib.dir
 /home/mint/open/open/build/CMakeFiles/open_d.dir
+/home/mint/open/open/build/CMakeFiles/cam_test.dir
 /home/mint/open/open/build/CMakeFiles/open_test.dir
-/home/mint/open/open/build/CMakeFiles/capture_test.dir
 /home/mint/open/open/build/CMakeFiles/edit_cache.dir
 /home/mint/open/open/build/CMakeFiles/rebuild_cache.dir
 /home/mint/open/open/build/CMakeFiles/list_install_components.dir

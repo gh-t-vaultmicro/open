@@ -188,6 +188,19 @@ open_d/fast:
 .PHONY : open_d/fast
 
 #=============================================================================
+# Target rules for targets named cam_test
+
+# Build rule for target.
+cam_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cam_test
+.PHONY : cam_test
+
+# fast build rule for target.
+cam_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cam_test.dir/build.make CMakeFiles/cam_test.dir/build
+.PHONY : cam_test/fast
+
+#=============================================================================
 # Target rules for targets named open_test
 
 # Build rule for target.
@@ -199,19 +212,6 @@ open_test: cmake_check_build_system
 open_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_test.dir/build.make CMakeFiles/open_test.dir/build
 .PHONY : open_test/fast
-
-#=============================================================================
-# Target rules for targets named capture_test
-
-# Build rule for target.
-capture_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 capture_test
-.PHONY : capture_test
-
-# fast build rule for target.
-capture_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/build
-.PHONY : capture_test/fast
 
 #=============================================================================
 # Target rules for targets named gmock
@@ -397,29 +397,29 @@ src/timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/open_d.dir/build.make CMakeFiles/open_d.dir/src/timer.cpp.s
 .PHONY : src/timer.cpp.s
 
-tests/capture_test.o: tests/capture_test.cpp.o
-.PHONY : tests/capture_test.o
+tests/cam_test.o: tests/cam_test.cpp.o
+.PHONY : tests/cam_test.o
 
 # target to build an object file
-tests/capture_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/tests/capture_test.cpp.o
-.PHONY : tests/capture_test.cpp.o
+tests/cam_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cam_test.dir/build.make CMakeFiles/cam_test.dir/tests/cam_test.cpp.o
+.PHONY : tests/cam_test.cpp.o
 
-tests/capture_test.i: tests/capture_test.cpp.i
-.PHONY : tests/capture_test.i
+tests/cam_test.i: tests/cam_test.cpp.i
+.PHONY : tests/cam_test.i
 
 # target to preprocess a source file
-tests/capture_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/tests/capture_test.cpp.i
-.PHONY : tests/capture_test.cpp.i
+tests/cam_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cam_test.dir/build.make CMakeFiles/cam_test.dir/tests/cam_test.cpp.i
+.PHONY : tests/cam_test.cpp.i
 
-tests/capture_test.s: tests/capture_test.cpp.s
-.PHONY : tests/capture_test.s
+tests/cam_test.s: tests/cam_test.cpp.s
+.PHONY : tests/cam_test.s
 
 # target to generate assembly for a file
-tests/capture_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/capture_test.dir/build.make CMakeFiles/capture_test.dir/tests/capture_test.cpp.s
-.PHONY : tests/capture_test.cpp.s
+tests/cam_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cam_test.dir/build.make CMakeFiles/cam_test.dir/tests/cam_test.cpp.s
+.PHONY : tests/cam_test.cpp.s
 
 tests/open_test.o: tests/open_test.cpp.o
 .PHONY : tests/open_test.o
@@ -457,7 +457,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... capture_test"
+	@echo "... cam_test"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
@@ -480,9 +480,9 @@ help:
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"
-	@echo "... tests/capture_test.o"
-	@echo "... tests/capture_test.i"
-	@echo "... tests/capture_test.s"
+	@echo "... tests/cam_test.o"
+	@echo "... tests/cam_test.i"
+	@echo "... tests/cam_test.s"
 	@echo "... tests/open_test.o"
 	@echo "... tests/open_test.i"
 	@echo "... tests/open_test.s"

@@ -51,7 +51,7 @@ queue<Mat> frame_queue;
 
 void show_usage(){
     cout << "----------------------------Usage---------------------------- " << endl;
-    std::cout << "[-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-m videofile] [-s picturefile] [-l logfile] [-v verbose]" << std::endl;
+    cout << "[-d device_id] [-f fps] [-c codec] [-w width] [-h height] [-m videofile] [-s picturefile] [-l logfile] [-v verbose]" << endl;
     cout << "e.g.) sudo ./open -d 0 -f 30 -w 640 -h 480 -m 1 -s 1 -l 1 -v " << endl;
     cout << "build) cmake .. // make " << endl;
     cout << "build) g++ -std=c++11 -o openmt openmt.cpp `pkg-config --cflags --libs opencv4` " << endl;

@@ -1,0 +1,7 @@
+add_test([=[CameraTest.CountCamerasTest]=]  /home/mint/open/open/build/cam_test [==[--gtest_filter=CameraTest.CountCamerasTest]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[CameraTest.CountCamerasTest]=]  PROPERTIES WORKING_DIRECTORY /home/mint/open/open/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[CameraTest.ListCamerasTest]=]  /home/mint/open/open/build/cam_test [==[--gtest_filter=CameraTest.ListCamerasTest]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[CameraTest.ListCamerasTest]=]  PROPERTIES WORKING_DIRECTORY /home/mint/open/open/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[TimerTest.GetCurrentTimeFormattedTest]=]  /home/mint/open/open/build/cam_test [==[--gtest_filter=TimerTest.GetCurrentTimeFormattedTest]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[TimerTest.GetCurrentTimeFormattedTest]=]  PROPERTIES WORKING_DIRECTORY /home/mint/open/open/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  cam_test_TESTS CameraTest.CountCamerasTest CameraTest.ListCamerasTest TimerTest.GetCurrentTimeFormattedTest)

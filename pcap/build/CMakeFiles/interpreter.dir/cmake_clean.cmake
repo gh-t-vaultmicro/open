@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/interpreter.dir/src/main_p.cpp.o"
-  "CMakeFiles/interpreter.dir/src/main_p.cpp.o.d"
+  "CMakeFiles/interpreter.dir/src/interpreter.cpp.o"
+  "CMakeFiles/interpreter.dir/src/interpreter.cpp.o.d"
   "interpreter"
   "interpreter.pdb"
 )

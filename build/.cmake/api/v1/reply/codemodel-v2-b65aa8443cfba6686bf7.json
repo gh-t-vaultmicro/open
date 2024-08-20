@@ -16,8 +16,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
@@ -33,8 +32,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
@@ -43,15 +41,8 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "interpreter::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-interpreter-Debug-53b8a46867a7f20ab175.json",
+					"jsonFile" : "target-interpreter-Debug-9c69af46476e1a594be7.json",
 					"name" : "interpreter",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "interpreter_lib::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-interpreter_lib-Debug-011f492660625a612d00.json",
-					"name" : "interpreter_lib",
 					"projectIndex" : 0
 				},
 				{

@@ -130,19 +130,6 @@ pcaplpcq/fast:
 .PHONY : pcaplpcq/fast
 
 #=============================================================================
-# Target rules for targets named interpreter_lib
-
-# Build rule for target.
-interpreter_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 interpreter_lib
-.PHONY : interpreter_lib
-
-# fast build rule for target.
-interpreter_lib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter_lib.dir/build.make CMakeFiles/interpreter_lib.dir/build
-.PHONY : interpreter_lib/fast
-
-#=============================================================================
 # Target rules for targets named interpreter
 
 # Build rule for target.
@@ -160,7 +147,7 @@ src/interpreter.o: src/interpreter.cpp.o
 
 # target to build an object file
 src/interpreter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter_lib.dir/build.make CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter.dir/build.make CMakeFiles/interpreter.dir/src/interpreter.cpp.o
 .PHONY : src/interpreter.cpp.o
 
 src/interpreter.i: src/interpreter.cpp.i
@@ -168,7 +155,7 @@ src/interpreter.i: src/interpreter.cpp.i
 
 # target to preprocess a source file
 src/interpreter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter_lib.dir/build.make CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter.dir/build.make CMakeFiles/interpreter.dir/src/interpreter.cpp.i
 .PHONY : src/interpreter.cpp.i
 
 src/interpreter.s: src/interpreter.cpp.s
@@ -176,32 +163,8 @@ src/interpreter.s: src/interpreter.cpp.s
 
 # target to generate assembly for a file
 src/interpreter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter_lib.dir/build.make CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter.dir/build.make CMakeFiles/interpreter.dir/src/interpreter.cpp.s
 .PHONY : src/interpreter.cpp.s
-
-src/main_p.o: src/main_p.cpp.o
-.PHONY : src/main_p.o
-
-# target to build an object file
-src/main_p.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter.dir/build.make CMakeFiles/interpreter.dir/src/main_p.cpp.o
-.PHONY : src/main_p.cpp.o
-
-src/main_p.i: src/main_p.cpp.i
-.PHONY : src/main_p.i
-
-# target to preprocess a source file
-src/main_p.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter.dir/build.make CMakeFiles/interpreter.dir/src/main_p.cpp.i
-.PHONY : src/main_p.cpp.i
-
-src/main_p.s: src/main_p.cpp.s
-.PHONY : src/main_p.s
-
-# target to generate assembly for a file
-src/main_p.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/interpreter.dir/build.make CMakeFiles/interpreter.dir/src/main_p.cpp.s
-.PHONY : src/main_p.cpp.s
 
 src/pcaplpcq.o: src/pcaplpcq.cpp.o
 .PHONY : src/pcaplpcq.o
@@ -236,14 +199,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... interpreter"
-	@echo "... interpreter_lib"
 	@echo "... pcaplpcq"
 	@echo "... src/interpreter.o"
 	@echo "... src/interpreter.i"
 	@echo "... src/interpreter.s"
-	@echo "... src/main_p.o"
-	@echo "... src/main_p.i"
-	@echo "... src/main_p.s"
 	@echo "... src/pcaplpcq.o"
 	@echo "... src/pcaplpcq.i"
 	@echo "... src/pcaplpcq.s"

@@ -59,9 +59,26 @@ target_link_libraries(
 
 #test code
 
-#open_test
+#cam_test
 
 #set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+add_executable(
+    cam_test
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/cam_test.cpp
+)
+
+target_link_libraries(
+    cam_test
+    PRIVATE
+        gtest_main
+        gmock_main
+        open_lib
+        ${OPENCV_LIBRARIES}
+      
+)
+
+
+#open_test
 add_executable(
     open_test
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/open_test.cpp
@@ -74,24 +91,7 @@ target_link_libraries(
         gmock_main
         open_lib
         ${OPENCV_LIBRARIES}
-      
-)
-
-
-#capture_test
-add_executable(
-    capture_test
-    ${CMAKE_CURRENT_SOURCE_DIR}/tests/capture_test.cpp
-)
-
-target_link_libraries(
-    capture_test
-    PRIVATE
-        gtest_main
-        gmock_main
-        open_lib
-        ${OPENCV_LIBRARIES}
 )
 
 include(GoogleTest)
-gtest_discover_tests(open_test)
+gtest_discover_tests(cam_test)

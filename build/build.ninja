@@ -74,48 +74,16 @@ build pcaplpcq: CXX_EXECUTABLE_LINKER__pcaplpcq_Debug CMakeFiles/pcaplpcq.dir/sr
   TARGET_PDB = pcaplpcq.dbg
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target interpreter_lib
-
-
-#############################################
-# Order-only phony target for interpreter_lib
-
-build cmake_object_order_depends_target_interpreter_lib: phony || CMakeFiles/interpreter_lib.dir
-
-build CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o: CXX_COMPILER__interpreter_lib_unscanned_Debug /home/mint/open/pcap/src/interpreter.cpp || cmake_object_order_depends_target_interpreter_lib
-  DEP_FILE = CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o.d
-  FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/mint/open/pcap/include
-  OBJECT_DIR = CMakeFiles/interpreter_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/interpreter_lib.dir/src
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target interpreter_lib
-
-
-#############################################
-# Link the static library libinterpreter_lib.a
-
-build libinterpreter_lib.a: CXX_STATIC_LIBRARY_LINKER__interpreter_lib_Debug CMakeFiles/interpreter_lib.dir/src/interpreter.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/interpreter_lib.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = libinterpreter_lib.a
-  TARGET_PDB = interpreter_lib.a.dbg
-
-# =============================================================================
 # Object build statements for EXECUTABLE target interpreter
 
 
 #############################################
 # Order-only phony target for interpreter
 
-build cmake_object_order_depends_target_interpreter: phony || cmake_object_order_depends_target_interpreter_lib
+build cmake_object_order_depends_target_interpreter: phony || CMakeFiles/interpreter.dir
 
-build CMakeFiles/interpreter.dir/src/main_p.cpp.o: CXX_COMPILER__interpreter_unscanned_Debug /home/mint/open/pcap/src/main_p.cpp || cmake_object_order_depends_target_interpreter
-  DEP_FILE = CMakeFiles/interpreter.dir/src/main_p.cpp.o.d
+build CMakeFiles/interpreter.dir/src/interpreter.cpp.o: CXX_COMPILER__interpreter_unscanned_Debug /home/mint/open/pcap/src/interpreter.cpp || cmake_object_order_depends_target_interpreter
+  DEP_FILE = CMakeFiles/interpreter.dir/src/interpreter.cpp.o.d
   FLAGS = -g -std=gnu++17
   INCLUDES = -I/home/mint/open/pcap/include
   OBJECT_DIR = CMakeFiles/interpreter.dir
@@ -129,9 +97,8 @@ build CMakeFiles/interpreter.dir/src/main_p.cpp.o: CXX_COMPILER__interpreter_uns
 #############################################
 # Link the executable interpreter
 
-build interpreter: CXX_EXECUTABLE_LINKER__interpreter_Debug CMakeFiles/interpreter.dir/src/main_p.cpp.o | libinterpreter_lib.a || libinterpreter_lib.a
+build interpreter: CXX_EXECUTABLE_LINKER__interpreter_Debug CMakeFiles/interpreter.dir/src/interpreter.cpp.o
   FLAGS = -g
-  LINK_LIBRARIES = libinterpreter_lib.a
   OBJECT_DIR = CMakeFiles/interpreter.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -164,8 +131,6 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build interpreter_lib: phony libinterpreter_lib.a
-
 # =============================================================================
 # Folder targets.
 
@@ -174,7 +139,7 @@ build interpreter_lib: phony libinterpreter_lib.a
 #############################################
 # Folder: /home/mint/open/build
 
-build all: phony pcaplpcq libinterpreter_lib.a interpreter
+build all: phony pcaplpcq interpreter
 
 # =============================================================================
 # Built-in targets

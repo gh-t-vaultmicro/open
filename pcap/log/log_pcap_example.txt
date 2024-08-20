@@ -1301,5 +1301,5 @@ Packets received: 6033
 Packets dropped by system buffer: 1589
 Packets dropped by interface: 0
 Packets counted: 6033
-Total Packet Length: 31963602
-Total Captured Packet Length: 31963602
+Total Packet Length byte: 31963602
+Total Captured Packet Length byte: 31963602

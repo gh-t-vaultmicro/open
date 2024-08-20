@@ -83,8 +83,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/open_lib.dir/DependInfo.cmake"
   "CMakeFiles/open_d.dir/DependInfo.cmake"
+  "CMakeFiles/cam_test.dir/DependInfo.cmake"
   "CMakeFiles/open_test.dir/DependInfo.cmake"
-  "CMakeFiles/capture_test.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"

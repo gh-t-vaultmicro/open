@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/interpreter.dir/src/main_p.cpp.o -o interpreter  libinterpreter_lib.a 
+/usr/bin/c++ CMakeFiles/interpreter.dir/src/interpreter.cpp.o -o interpreter 

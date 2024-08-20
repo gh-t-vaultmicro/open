@@ -1,5 +1,4 @@
 /home/mint/open/pcap/build/CMakeFiles/pcaplpcq.dir
-/home/mint/open/pcap/build/CMakeFiles/interpreter_lib.dir
 /home/mint/open/pcap/build/CMakeFiles/interpreter.dir
 /home/mint/open/pcap/build/CMakeFiles/edit_cache.dir
 /home/mint/open/pcap/build/CMakeFiles/rebuild_cache.dir

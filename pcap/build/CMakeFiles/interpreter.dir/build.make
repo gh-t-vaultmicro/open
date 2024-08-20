@@ -69,30 +69,29 @@ include CMakeFiles/interpreter.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/interpreter.dir/flags.make
 
-CMakeFiles/interpreter.dir/src/main_p.cpp.o: CMakeFiles/interpreter.dir/flags.make
-CMakeFiles/interpreter.dir/src/main_p.cpp.o: /home/mint/open/pcap/src/main_p.cpp
-CMakeFiles/interpreter.dir/src/main_p.cpp.o: CMakeFiles/interpreter.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/pcap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/interpreter.dir/src/main_p.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/interpreter.dir/src/main_p.cpp.o -MF CMakeFiles/interpreter.dir/src/main_p.cpp.o.d -o CMakeFiles/interpreter.dir/src/main_p.cpp.o -c /home/mint/open/pcap/src/main_p.cpp
+CMakeFiles/interpreter.dir/src/interpreter.cpp.o: CMakeFiles/interpreter.dir/flags.make
+CMakeFiles/interpreter.dir/src/interpreter.cpp.o: /home/mint/open/pcap/src/interpreter.cpp
+CMakeFiles/interpreter.dir/src/interpreter.cpp.o: CMakeFiles/interpreter.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mint/open/pcap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/interpreter.dir/src/interpreter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/interpreter.dir/src/interpreter.cpp.o -MF CMakeFiles/interpreter.dir/src/interpreter.cpp.o.d -o CMakeFiles/interpreter.dir/src/interpreter.cpp.o -c /home/mint/open/pcap/src/interpreter.cpp
 
-CMakeFiles/interpreter.dir/src/main_p.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/interpreter.dir/src/main_p.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/pcap/src/main_p.cpp > CMakeFiles/interpreter.dir/src/main_p.cpp.i
+CMakeFiles/interpreter.dir/src/interpreter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/interpreter.dir/src/interpreter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mint/open/pcap/src/interpreter.cpp > CMakeFiles/interpreter.dir/src/interpreter.cpp.i
 
-CMakeFiles/interpreter.dir/src/main_p.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/interpreter.dir/src/main_p.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/pcap/src/main_p.cpp -o CMakeFiles/interpreter.dir/src/main_p.cpp.s
+CMakeFiles/interpreter.dir/src/interpreter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/interpreter.dir/src/interpreter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mint/open/pcap/src/interpreter.cpp -o CMakeFiles/interpreter.dir/src/interpreter.cpp.s
 
 # Object files for target interpreter
 interpreter_OBJECTS = \
-"CMakeFiles/interpreter.dir/src/main_p.cpp.o"
+"CMakeFiles/interpreter.dir/src/interpreter.cpp.o"
 
 # External object files for target interpreter
 interpreter_EXTERNAL_OBJECTS =
 
-interpreter: CMakeFiles/interpreter.dir/src/main_p.cpp.o
+interpreter: CMakeFiles/interpreter.dir/src/interpreter.cpp.o
 interpreter: CMakeFiles/interpreter.dir/build.make
-interpreter: libinterpreter_lib.a
 interpreter: CMakeFiles/interpreter.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mint/open/pcap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable interpreter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/interpreter.dir/link.txt --verbose=$(VERBOSE)

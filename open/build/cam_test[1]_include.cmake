@@ -1,0 +1,5 @@
+if(EXISTS "/home/mint/open/open/build/cam_test[1]_tests.cmake")
+  include("/home/mint/open/open/build/cam_test[1]_tests.cmake")
+else()
+  add_test(cam_test_NOT_BUILT cam_test_NOT_BUILT)
+endif()
