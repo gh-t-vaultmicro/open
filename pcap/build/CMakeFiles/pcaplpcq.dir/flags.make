@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mint/open/pcap/include
+CXX_INCLUDES = -I/home/mint/open/pcap/include -I/home/mint/open/pcap/build/_deps/googletest-src/googlemock/include -I/home/mint/open/pcap/build/_deps/googletest-src/googletest/include
 
 CXX_FLAGS = -std=gnu++17
 

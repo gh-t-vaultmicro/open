@@ -1,0 +1,47 @@
+
+Camera FPS set to: 30
+Camera resolution set to: 640x480
+
+
+17:02:30.882: 674438ms, Total frame: 1
+17:02:32.191: 6858ms, Total frame: 2
+17:02:32.191: Frames in the last second: 2, Frame loss: 0, Total frame: 2
+17:02:32.217: 15647ms, Total frame: 3
+17:02:32.324: 9703ms, Total frame: 4
+17:02:32.370: 11757ms, Total frame: 5
+17:02:32.382: 8787ms, Total frame: 6
+17:02:32.406: 15582ms, Total frame: 7
+17:02:32.422: 7569ms, Total frame: 8
+17:02:32.437: 8033ms, Total frame: 9
+17:02:32.519: 5448ms, Total frame: 10
+17:02:32.535: 7220ms, Total frame: 11
+17:02:32.577: 2330ms, Total frame: 12
+17:02:32.657: 56254ms, Total frame: 13
+17:02:32.723: 27157ms, Total frame: 14
+17:02:32.749: 1811ms, Total frame: 15
+17:02:32.777: 1807ms, Total frame: 16
+17:02:32.802: 8216ms, Total frame: 17
+17:02:32.823: 2946ms, Total frame: 18
+17:02:32.872: 3504ms, Total frame: 19
+17:02:32.902: 3520ms, Total frame: 20
+17:02:32.915: 2422ms, Total frame: 21
+17:02:32.930: 7248ms, Total frame: 22
+17:02:33.098: 62480ms, Total frame: 23
+17:02:33.154: 28208ms, Total frame: 24
+17:02:33.189: 27597ms, Total frame: 25
+17:02:33.223: 17593ms, Total frame: 26
+17:02:33.225: Frames in the last second: 24, Frame loss: 0, Total frame: 26
+17:02:33.243: 11798ms, Total frame: 27
+17:02:33.278: 14806ms, Total frame: 28
+17:02:33.297: 8144ms, Total frame: 29
+17:02:33.356: 35289ms, Total frame: 30
+17:02:33.369: 8613ms, Total frame: 31
+17:02:33.468: 68110ms, Total frame: 32
+17:02:33.511: 34122ms, Total frame: 33
+17:02:33.535: 1808ms, Total frame: 34
+17:02:33.614: 34617ms, Total frame: 35
+17:02:33.729: 40284ms, Total frame: 36
+17:02:33.790: 2753ms, Total frame: 37
+17:02:33.807: 9724ms, Total frame: 38
+17:02:33.857: 6801ms, Total frame: 39
+17:02:34.052: 62103ms, Total frame: 40

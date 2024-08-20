@@ -93,6 +93,7 @@ pcaplpcq_EXTERNAL_OBJECTS =
 pcaplpcq: CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o
 pcaplpcq: CMakeFiles/pcaplpcq.dir/build.make
 pcaplpcq: /home/mint/open/pcap/lib/libpcap.so
+pcaplpcq: /home/mint/open/pcap/lib/libpcap.so.1.10.4
 pcaplpcq: CMakeFiles/pcaplpcq.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mint/open/pcap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable pcaplpcq"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pcaplpcq.dir/link.txt --verbose=$(VERBOSE)

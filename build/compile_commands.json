@@ -1,14 +1,38 @@
 [
 {
   "directory": "/home/mint/open/build",
-  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -g -std=gnu++17 -o CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o -c /home/mint/open/pcap/src/pcaplpcq.cpp",
+  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -I/home/mint/open/build/_deps/googletest-src/googlemock/include -I/home/mint/open/build/_deps/googletest-src/googletest/include -g -std=gnu++17 -o CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o -c /home/mint/open/pcap/src/pcaplpcq.cpp",
   "file": "/home/mint/open/pcap/src/pcaplpcq.cpp",
   "output": "CMakeFiles/pcaplpcq.dir/src/pcaplpcq.cpp.o"
 },
 {
   "directory": "/home/mint/open/build",
-  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -g -std=gnu++17 -o CMakeFiles/interpreter.dir/src/interpreter.cpp.o -c /home/mint/open/pcap/src/interpreter.cpp",
+  "command": "/usr/bin/g++ -I/home/mint/open/pcap/include -I/home/mint/open/build/_deps/googletest-src/googlemock/include -I/home/mint/open/build/_deps/googletest-src/googletest/include -g -std=gnu++17 -o CMakeFiles/interpreter.dir/src/interpreter.cpp.o -c /home/mint/open/pcap/src/interpreter.cpp",
   "file": "/home/mint/open/pcap/src/interpreter.cpp",
   "output": "CMakeFiles/interpreter.dir/src/interpreter.cpp.o"
+},
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -I/home/mint/open/build/_deps/googletest-src/googlemock/include -I/home/mint/open/build/_deps/googletest-src/googlemock -isystem /home/mint/open/build/_deps/googletest-src/googletest/include -isystem /home/mint/open/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/mint/open/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/home/mint/open/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -isystem /home/mint/open/build/_deps/googletest-src/googlemock/include -isystem /home/mint/open/build/_deps/googletest-src/googlemock -isystem /home/mint/open/build/_deps/googletest-src/googletest/include -isystem /home/mint/open/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/mint/open/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/home/mint/open/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -I/home/mint/open/build/_deps/googletest-src/googletest/include -I/home/mint/open/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/mint/open/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/home/mint/open/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/home/mint/open/build",
+  "command": "/usr/bin/g++ -isystem /home/mint/open/build/_deps/googletest-src/googletest/include -isystem /home/mint/open/build/_deps/googletest-src/googletest -g -std=c++17 -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/mint/open/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/home/mint/open/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
 }
 ]

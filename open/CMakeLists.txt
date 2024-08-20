@@ -95,3 +95,4 @@ target_link_libraries(
 
 include(GoogleTest)
 gtest_discover_tests(cam_test)
+gtest_discover_tests(open_test)
