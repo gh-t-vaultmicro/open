@@ -5,6 +5,7 @@
 #include <string>
 #include <regex>
 #include <algorithm>
+#include <map>
 
 using namespace std;
 
@@ -67,17 +68,17 @@ void parse_file(const string& file_path) {
         vector<pair<string, string>> parsed_data = parse_packet_data(packet_data);
 
         string urb_transfer_type = parsed_data[2].second;
-        string urb_status = parsed_data[10].second;
+        string urb_status_code = parsed_data[8].second;  // 순수한 status code 사용
 
         // Count URB statuses
         if (urb_transfer_type == "00 (ISO)" || urb_transfer_type == "03 (BULK)" || urb_transfer_type == "01 (INTERRUPT)" || urb_transfer_type == "02 (CONTROL)") {
-            if (urb_status == "8dffffff (Operation Now in Progress)") {
+            if (urb_status_code == "8dffffff") {  // Compare only the status code
                 operation_now_in_progress_count++;
-            } else if (urb_status == "feffffff (No Such File or Directory)") {
+            } else if (urb_status_code == "feffffff") {
                 no_such_file_count++;
                 no_such_file_packets.push_back(make_pair(timestamp, chrono_time));
-            } else if (urb_status == "00000000 (SUCCESS)") {
-                cout << "SUCCESS found, increasing count" << endl;
+            } else if (urb_status_code == "00000000") {
+                //cout << "SUCCESS found, increasing count" << endl;
                 success_count++;
             }
         }
@@ -104,7 +105,22 @@ void parse_file(const string& file_path) {
         log_file << "Packet:      " << timestamp << "\n";
         log_file << "Chrono Time: " << chrono_time << "\n";
         for (const auto& kv : parsed_data) {
-            log_file << kv.first << ": " << kv.second << "\n";
+            if (kv.first == "URB Status") {
+                // 상태 코드와 설명을 결합하여 로그에 출력
+                string urb_status_full;
+                if (kv.second == "8dffffff") {
+                    urb_status_full = kv.second + " (Operation Now in Progress)";
+                } else if (kv.second == "feffffff") {
+                    urb_status_full = kv.second + " (No Such File or Directory)";
+                } else if (kv.second == "00000000") {
+                    urb_status_full = kv.second + " (SUCCESS)";
+                } else {
+                    urb_status_full = kv.second + " (Unknown Status)";
+                }
+                log_file << kv.first << ": " << urb_status_full << "\n";
+            } else {
+                log_file << kv.first << ": " << kv.second << "\n";
+            }
         }
         log_file << "\n";
     }
@@ -113,7 +129,7 @@ void parse_file(const string& file_path) {
 
     int total_urb = no_such_file_count + success_count;
 
-        // Log URB status counts
+    // Log URB status counts
     log_file << "Total URBs to consider (excluding 'Operation Now in Progress'): " << total_urb << "\n";
     log_file << "SUCCESS Count: " << success_count << "\n";
     log_file << "No Such File or Directory Count: " << no_such_file_count << "\n";
@@ -174,7 +190,8 @@ vector<pair<string, string>> parse_packet_data(const string& packet_data) {
     string urb_bus_id = packet_data.substr(24, 4);
     string device_setup_request = packet_data.substr(28, 2);
     string data_present = packet_data.substr(30, 2);
-    string urb_status = packet_data.substr(56, 8);
+    string urb_status_code = packet_data.substr(56, 8);  // 순수한 status code
+
     string urb_length = packet_data.substr(64, 8);
     string data_length = packet_data.substr(72, 8);
     string setup_header = packet_data.substr(80, 16);
@@ -199,9 +216,7 @@ vector<pair<string, string>> parse_packet_data(const string& packet_data) {
         {"URB Bus ID", urb_bus_id},
         {"Device Setup Request", device_setup_request},
         {"Data Present", data_present},
-        {"URB Status", (urb_status == "8dffffff") ? "8dffffff (Operation Now in Progress)" :
-                       (urb_status == "feffffff") ? "feffffff (No Such File or Directory)" : 
-                       "00000000 (SUCCESS)"},
+        {"URB Status", urb_status_code},  // 순수한 코드만 반환
         {"URB Length", urb_length},
         {"Data Length", data_length},
         {"Setup Header", setup_header},

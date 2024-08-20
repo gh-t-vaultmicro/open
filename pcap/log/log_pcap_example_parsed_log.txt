@@ -360,12 +360,12 @@ Copy of Transfer Flag: 04020000
 ISO Descriptor Number: 00000000
 
 --------------------------------------------------------------------------------
-Total URBs to consider (excluding 'Operation Now in Progress'): 0
-SUCCESS Count: 0
+Total URBs to consider (excluding 'Operation Now in Progress'): 10
+SUCCESS Count: 10
 No Such File or Directory Count: 0
 Operation Now in Progress excluded from the percentage calculation 
-SUCCESS: -nan%
-No Such File or Directory: -nan%
+SUCCESS: 100%
+No Such File or Directory: 0%
 
 No Such File or Directory Logged Time:
 
